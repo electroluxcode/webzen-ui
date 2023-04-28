@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+# coding=utf-8
+#
+# commit msg check
+import sys
+import re
+import io
+import os
+if hasattr(sys.stdout, 'buffer'):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+TIPS_INFO = '''
+不符合commit规范,提交失败!
+
+commit规范:
+type(scope):message
+feat: 新功能 (feature)
+fix:修补bug
+docs:文档 
+style:格式(不影响代码运行的变动)
+refactor: 重构(即不是新增功能，也不是修改bug的代码变动)
+chore:构建过程或辅助工具的变动
+revert: 撤销，版本回退
+perf:性能优化
+test:测试
+improve:改进
+update:版本更新
+build: 打包
+ci: 持续集成
+
+规范样例：
+feat:类型是feat表示在代码库中新增了一个功能 git commit -m "feat: 增加了xxx功能"
+
+！！！！提交失败！！！！
+'''
+
+def check_commit_line1_format(msg):
+    print(msg)
+    # regOther = r'\S{5,} (.){10,100}' ^fix:|^feat: ((修复了)|(增加了))(.){2,100}功能
+    regOther = r'^fix:|^feat:|^docs:|^style:|^refactor:|^test:|^chore:|^build:|^ci:|^update:|^test:|^improve:|^perf:|^revert: (.){1,100}'
+    matchObj = re.match(regOther, msg)
+    return matchObj
+
+if __name__=="__main__":
+    
+    # print("进行lint扫描")
+    # os.system("npm run lint")
+    # print("进行audit扫描")
+    # os.system("npm audit")
+    print("--------husky校验中--------")
+    # print(sys)
+    with open(sys.argv[1], 'r',encoding="utf-8") as f:
+        for line in f:
+            if (check_commit_line1_format(line)):
+                # 脚手架选择CICD 就可以 开启，作用是自动生成CHANGELOG 并且写入文件
+                if False:
+                    os.system("node  CICD/CHANGELOG/changeLogAdd.js " + line)
+                if False:
+                    os.system("node CICD/readmeUpdate/readmeUpdate.js" )
+                    
+                sys.exit(0)
+            else:
+                print(TIPS_INFO)
+                
+                sys.exit(1)
