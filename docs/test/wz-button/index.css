@@ -1,0 +1,24 @@
+*{
+    color:white
+}
+:host(.active) .content{
+    
+    margin-top:20px;
+    background:rgba(0,0,0,30%);
+}
+:host{
+    display:block
+}
+.content{
+    width:100px;
+    height:100px;
+    background:rgba(0,0,0,20%)
+}
+
+::slotted([slot="container"]){
+    display:none
+}
+
+::slotted(.active){
+    display:block
+}

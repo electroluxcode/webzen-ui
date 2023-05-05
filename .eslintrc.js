@@ -9,7 +9,9 @@ module.exports = {
     // 额外添加的规则可查看 https://vuejs.github.io/eslint-plugin-vue/rules/
     //   'plugin:vue/essential', //加了这个才能当作vue来进行解析，不然只会当成js来进行解析 eslint-plugin-react
   ],
-
+  plugins: [
+    "node"
+  ],
   //不加这个会报错Parsing error: The keyword 'import' is reserved
   parserOptions: {
     // 指定解析器 parser
@@ -27,6 +29,8 @@ module.exports = {
   // "warn"或者1    //在打开的规则作为警告（不影响退出代码）
   // "error"或者2    //把规则作为一个错误（退出代码触发时为1）
   rules: {
+    // 打开对assert模块的支持
+    "node/no-unsupported-features/es-builtins": ["error", {"version": ">=10.0.0", "ignores": ["assert"]}],
     // "camelcase": ["error", { "allow": ["aa_bb"] }],  // 属性名
     // "max-lines": ["error", {"max": 20, "skipComments": true}], // 每一个文件最多的行数
     // "no-console": 2,//禁止使用console
@@ -51,7 +55,7 @@ module.exports = {
       files: ['*.js'],
       // extends: ['alloy'],
       rules: {
-        'no-unused-vars': 0, //没被使用
+        'no-unused-vars': 2, //没被使用
       },
     },
   ],
