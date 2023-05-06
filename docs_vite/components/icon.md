@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
   import './index.css'
   onMounted(() => {
-    
+    import ('../../src/component/wz-icon/')
   })
 </script>
 
