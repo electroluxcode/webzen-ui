@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 export default defineConfig({
+  outDir: '../docs',
   // 相对路径打包
   base: '/webzen-ui/',
   title: "Webzen-ui",
