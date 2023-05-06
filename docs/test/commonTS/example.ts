@@ -1,11 +1,11 @@
-const multiply = (a:number, b:number) => {
+const multiply1 = (a:number, b:number) => {
     return a * b
 }
 
 
 
 
-exports.multiply =  multiply
+exports.multiply =  multiply1
 
 
 

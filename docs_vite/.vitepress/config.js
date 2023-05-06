@@ -15,7 +15,7 @@ export default defineConfig({
     logo: "/logo.svg",
     nav: [
       { text: "首页", link: "/" },
-      { text: "组件", link: "/components/" },
+      { text: "组件", link: "/components/icon" },
     ],
     socialLinks: [{ icon: "github", link: "https://gitee.com/Electrolux" }],
     footer: {
@@ -28,26 +28,26 @@ export default defineConfig({
         {
           text: '通用',
           items: [
-            { text: "button 按钮", link: "/components/button" },
+            { text: "icon 图标", link: "/components/icon" },
            
           ]
         },
-        {
-          text: '表单',
-          items: [
-            { text: "switch 开关", link: "/components/switch" },
+        // {
+        //   text: '表单',
+        //   items: [
+        //     { text: "switch 开关", link: "/components/switch" },
             
-          ]
-        },
-        {
-          text: '反馈',
-          items: [
-            { text: "progress 进度条", link: "/components/progress" },
-            { text: "popconfirm 确认弹出框", link: "/components/popconfirm" },
-            { text: "message 提示信息", link: "/components/message" },
-            { text: "dialog 弹窗", link: "/components/dialog" },
-          ]
-        }
+        //   ]
+        // },
+        // {
+        //   text: '反馈',
+        //   items: [
+        //     { text: "progress 进度条", link: "/components/progress" },
+        //     { text: "popconfirm 确认弹出框", link: "/components/popconfirm" },
+        //     { text: "message 提示信息", link: "/components/message" },
+        //     { text: "dialog 弹窗", link: "/components/dialog" },
+        //   ]
+        // }
       ],
     },
   },

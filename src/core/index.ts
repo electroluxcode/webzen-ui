@@ -1,6 +1,6 @@
 import { DefaultOptons,  Options  } from "../types/index"
 import {ajax, cache,error,eventbus,tdk} from "../utils/index"
-class UiInit {
+class utilInit {
     public data: DefaultOptons;
     public loading_circle:HTMLElement = document.createElement("div");
     public mask:HTMLElement = document.createElement("div");
@@ -48,5 +48,5 @@ class UiInit {
 }
 
 export {
-    UiInit
+    utilInit
 }
