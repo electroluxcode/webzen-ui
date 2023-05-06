@@ -9,10 +9,10 @@
     "prepare": "husky install ",
     "test": "jest file/testCase --coverage ",
     "docs": "docsify serve docs",
-    "docs:dev": "vitepress dev docs_vite",
-    "docs:build": "vitepress build docs_vite",
-    "docs:serve": "vitepress serve docs_vite",
-    "docs:preview": "vitepress preview docs_vite"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "docs:preview": "vitepress preview docs"
   },
   "homepage": "https://gitee.com/Electrolux/",
   "repository": {
