@@ -3,11 +3,11 @@ import { reactive, onMounted } from 'vue'
 import './index.css'
   let tips = null
   onMounted(() => {
-    import('../../components/switch/')
-    import('../../components/button/')
-    import('../../components/tips/').then((res) => {
-      tips = res.default
-    })
+    // import('../../components/switch/')
+    // import('../../components/button/')
+    // import('../../components/tips/').then((res) => {
+    //   tips = res.default
+    // })
   })
   const state = reactive({
     value: true

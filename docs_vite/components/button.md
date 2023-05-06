@@ -2,12 +2,7 @@
 import { onMounted } from 'vue'
   import './index.css'
   onMounted(() => {
-    import('../../components/button/')
-    import('../../components/button-group/')
-    import('../../components/checkbox/')
-    import('../../components/switch/')
-    import('../../components/radio-group/')
-    import('../../components/icon/')
+   
   })
 </script>
 # button 

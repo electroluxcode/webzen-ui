@@ -2,6 +2,8 @@ import { defineConfig } from "vitepress";
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 export default defineConfig({
+  // 相对路径打包
+  // base: './',
   title: "Webzen-ui",
   cleanUrls: true,
   lang: 'en-US',
