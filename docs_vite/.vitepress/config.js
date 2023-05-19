@@ -1,6 +1,8 @@
 import { defineConfig } from "vitepress";
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
+
+
 export default defineConfig({
   outDir: '../docs',
   // 相对路径打包
@@ -9,7 +11,7 @@ export default defineConfig({
   cleanUrls: true,
   lang: 'en-US',
   description: "hello world",
-  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }]],
+  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/sword.svg" }]],
   lastUpdated: true,
   themeConfig: {
     outlineTitle: '目录',
@@ -18,6 +20,7 @@ export default defineConfig({
     logo: "/logo.svg",
     nav: [
       { text: "首页", link: "/" },
+      { text: "指南", link: "/guide/quick start" },
       { text: "组件", link: "/components/icon" },
     ],
     socialLinks: [{ icon: "github", link: "https://gitee.com/Electrolux" }],
@@ -31,17 +34,24 @@ export default defineConfig({
         {
           text: '通用',
           items: [
-            { text: "icon 图标", link: "/components/icon" },
+            { text: "icon", link: "/components/icon" },
            
           ]
         },
-        // {
-        //   text: '表单',
-        //   items: [
-        //     { text: "switch 开关", link: "/components/switch" },
+        {
+          text: '表单控件',
+          items: [
+            { text: "button", link: "/components/button" },
             
-        //   ]
-        // },
+          ]
+        },
+        {
+          text: '交互',
+          items: [
+            { text: "message", link: "/components/message" },
+            
+          ]
+        },
         // {
         //   text: '反馈',
         //   items: [
