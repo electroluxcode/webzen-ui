@@ -8,7 +8,7 @@ hero:
   text: 面向未来的原生组件库
   tagline: Web Components
   image:
-    src: /sword.svg
+    src: "https://cdn.jsdelivr.net/npm/electroluxasset@1.0.8/image/svg/atom.svg"
     alt: Webzen-ui
   actions:
     - theme: brand

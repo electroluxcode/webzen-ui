@@ -11,13 +11,13 @@ export default defineConfig({
   cleanUrls: true,
   lang: 'en-US',
   description: "hello world",
-  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/sword.svg" }]],
+  head: [["link", { rel: "icon", type: "image/svg+xml", href: "https://cdn.jsdelivr.net/npm/electroluxasset@1.0.8/image/svg/atom.svg" }]],
   lastUpdated: true,
   themeConfig: {
     outlineTitle: '目录',
     // lastUpdatedText: 'Updated Date',
     i18nRouting:true,
-    logo: "/logo.svg",
+    logo: "https://cdn.jsdelivr.net/npm/electroluxasset@1.0.8/image/svg/atom.svg",
     nav: [
       { text: "首页", link: "/" },
       { text: "指南", link: "/guide/quick start" },
@@ -49,7 +49,7 @@ export default defineConfig({
           text: '交互',
           items: [
             { text: "message", link: "/components/message" },
-            
+            { text: "dialog", link: "/components/dialog" },
           ]
         },
         // {

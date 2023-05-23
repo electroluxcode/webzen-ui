@@ -26,7 +26,7 @@ import { onMounted } from 'vue'
 
 <div class="wrap">
   <wz-button type="primary" id="button">primary</wz-button>
-  <wz-button type="danger">dashed</wz-button>
+  <wz-button type="danger">danger</wz-button>
   <wz-button type="common">common</wz-button>
  
   <wz-button>default</wz-button>

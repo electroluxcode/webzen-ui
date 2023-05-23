@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ::part(dialog){
+    width: 400px;
+}
+    </style>
+</head>
+<body>
+    <script type="module">
+        import dialog from './index.js';
+        dialog.alert({
+            type:"confirm1",
+            title: 'tit3le',//标题
+            submittext: 'ok',//确定键文本
+            canceltext: 'cance222l',//取消键文本
+            onsubmit: function () {
+                //按确定键的操作
+                alert("te")
+            },
+            oncancel:function(){
+                alert("点击了取消")
+            },
+            content: 'content',//内容
+        });
+    </script>
+</body>
+</html>
