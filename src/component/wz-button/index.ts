@@ -69,4 +69,4 @@ class button extends Base {
 if (!customElements.get('wz-button')) {
   customElements.define('wz-button', button);
 }
-export { button };
+export default button ;

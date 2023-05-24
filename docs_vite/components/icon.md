@@ -22,9 +22,7 @@ import { onMounted } from 'vue'
 
 ```html
 <!-- 引入 -->
-<script type="module">
-    import ('../../src/component/wz-icon/')
-</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-icon/index.js">
 <!-- 使用 -->
 <wz-icon name="flag"></wz-icon>
 <wz-icon name="user"></wz-icon>

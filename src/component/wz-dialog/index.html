@@ -13,15 +13,15 @@
 </head>
 <body>
     <script type="module">
-        import dialog from './index.js';
+        import dialog from 'https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-dialog/index.js';
         dialog.alert({
-            type:"confirm1",
+            type:"confirm",
             title: 'tit3le',//标题
             submittext: 'ok',//确定键文本
             canceltext: 'cance222l',//取消键文本
             onsubmit: function () {
                 //按确定键的操作
-                alert("te")
+                alert("点击了确定")
             },
             oncancel:function(){
                 alert("点击了取消")

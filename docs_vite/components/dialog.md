@@ -4,8 +4,7 @@ import { onMounted } from 'vue'
   onMounted(() => {
     import ('../../src/component/wz-button/')
     import('../../src/component/wz-dialog/').then((res)=> {
-         window.dialog =res.Dialog
-         console.log(res.Dialog)
+         window.dialog =res.default
          window.dialogConfirm =()=> {
                 dialog.alert({
                     type:"confirm",
@@ -60,11 +59,12 @@ import { onMounted } from 'vue'
 ## 使用方式
 
 ```html
-使用方式,用new 出来之后就可以使用里面的 alert 方法了
+
+使用方式,用new 出来之后就可以使用里面的 alert 方法了.后面接着进行工程化的打包
 
 <!-- 引入 -->
-<script type="module">
-     import dialog from './index.js';
+ <script type="module">
+    import dialog from 'https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-dialog/index.js';
     dialog.alert({
         type:"confirm",
         title: 'tit3le',//标题

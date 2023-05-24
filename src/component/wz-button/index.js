@@ -66,4 +66,4 @@ _button_btnEl = new WeakMap();
 if (!customElements.get('wz-button')) {
     customElements.define('wz-button', button);
 }
-export { button };
+export default button;

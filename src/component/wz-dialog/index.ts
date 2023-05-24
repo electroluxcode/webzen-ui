@@ -4,7 +4,7 @@ import "../wz-button/index.js";
 // @ts-ignore
 import style from "./index.css?inline" assert { type: "css" };
 
-export default class Dialog extends Base {
+class Dialog extends Base {
 	#dialog :HTMLElement | any;
   #title:HTMLElement;
   #content;
@@ -235,4 +235,4 @@ Dialog.alert = function(...params) {
   return this.show('alert', ...params)
 }
 
-export {Dialog };
+export default Dialog;

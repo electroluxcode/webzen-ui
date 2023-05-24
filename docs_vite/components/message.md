@@ -5,7 +5,8 @@ import { onMounted } from 'vue'
     import ('../../src/component/wz-icon/')
     import ('../../src/component/wz-button/')
     import('../../src/component/wz-message/').then((res)=> {
-         window.res =res
+      console.log(res.default)
+         window.res =res.default
     })
   })
 </script>
@@ -31,14 +32,12 @@ import { onMounted } from 'vue'
 使用方式,用mode new 出来之后就可以使用里面的createToast 方法了
 
 <!-- 引入 -->
-<script type="module">
-    import('../../src/component/wz-message/').then((res)=> {
-         window.res =res
-    })
-    //import {Message} from "./index.js"
-    let message =new res.Message({mode:"light"});
-    message.createToast("info","你1好",1000,"light")
-</script>
+ <script type="module">
+      // import Message from "./index.js"
+      import Message from 'https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-message/index.js';
+      let message = new Message({ mode: "light" });
+      message.createToast("info", "你1好", 1000, "light")
+  </script>
 
 ```
 
@@ -50,7 +49,7 @@ import { onMounted } from 'vue'
 第三个参数是持续时间
 ```js
 document.querySelector("#electrolux_message")?.remove(); 
-let message =new res.Message({mode:"dark"}); 
+let message =new res({mode:"dark"}); 
 createToast("info","info",3000)
 createToast("success","success",3000)
 createToast("error","error",3000)
@@ -58,10 +57,10 @@ createToast("warning","warning",3000)
 ```
 <div class="wrap">
 
- <wz-button type="primary" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"dark"}); message.createToast("success","success",2000)'>success</wz-button>
-<wz-button type="common" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"dark"}); message.createToast("info","info",2000)'>info</wz-button>
-<wz-button type="default" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"dark"}); message.createToast("warning","warning",2000)'>warning</wz-button>
-<wz-button type="danger" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"dark"}); message.createToast("error","error",2000)'>error</wz-button>
+ <wz-button type="primary" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"dark"}); message.createToast("success","success",2000)'>success</wz-button>
+<wz-button type="common" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"dark"}); message.createToast("info","info",2000)'>info</wz-button>
+<wz-button type="default" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"dark"}); message.createToast("warning","warning",2000)'>warning</wz-button>
+<wz-button type="danger" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"dark"}); message.createToast("error","error",2000)'>error</wz-button>
 </div >
 
 
@@ -71,7 +70,7 @@ createToast("warning","warning",3000)
 ##  黑夜白天模式
 
 <div class="wrap">
-<wz-button type="primary" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"light"}); message.createToast("info","你1好",2000,"light")'
+<wz-button type="primary" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"light"}); message.createToast("info","你1好",2000,"light")'
 >白天模式</wz-button>
- <wz-button type="danger" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res.Message({mode:"dark"}); message.createToast("info","你1好",2000,"dark")'>黑夜模式</wz-button>
+ <wz-button type="danger" onclick='document.querySelector("#electrolux_message")?.remove(); let message =new res({mode:"dark"}); message.createToast("info","你1好",2000,"dark")'>黑夜模式</wz-button>
 </div>

@@ -13,9 +13,7 @@ import { onMounted } from 'vue'
 
 ```html
 <!-- 引入 -->
-<script type="module">
-    import ('../../src/component/wz-button/')
-</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-button/index.js">
 <!-- 使用 -->
 <wz-button>button</wz-button>
 ```
