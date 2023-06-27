@@ -15,9 +15,6 @@ import Base from '../wz-base.js';
 import style from './index.css?inline' assert { type: 'css' };
 // # 代表是页面id
 class Icon extends Base {
-    static get observedAttributes() {
-        return ['name', 'size', 'color', 'type', 'spin'];
-    }
     constructor() {
         super();
         _Icon_icon.set(this, void 0);
@@ -25,6 +22,9 @@ class Icon extends Base {
         this.adoptedStyle(style);
         shadowRoot.innerHTML = `<i id="icon" part="icon" class="icon" role="img"></i>`;
         __classPrivateFieldSet(this, _Icon_icon, shadowRoot.getElementById('icon'), "f");
+    }
+    static get observedAttributes() {
+        return ['name', 'size', 'color', 'type', 'spin'];
     }
     get name() {
         return this.getAttribute('name');

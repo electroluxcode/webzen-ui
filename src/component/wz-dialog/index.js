@@ -13,11 +13,8 @@ var _Dialog_dialog, _Dialog_title, _Dialog_content, _Dialog_btnClose, _Dialog_bt
 import Base from "../wz-base.js";
 import "../wz-button/index.js";
 // @ts-ignore
-import style from "./index.css?inline" assert { type: "css" };
+import style from "./index.css?inline" assert { type: "text" };
 class Dialog extends Base {
-    static get observedAttributes() {
-        return ["loading", "open", "title", "content", "canceltext", "submittext"];
-    }
     constructor() {
         super();
         _Dialog_dialog.set(this, void 0);
@@ -50,6 +47,9 @@ class Dialog extends Base {
         __classPrivateFieldSet(this, _Dialog_btnClose, shadowRoot.getElementById("btnClose"), "f");
         __classPrivateFieldSet(this, _Dialog_btnCancel, shadowRoot.getElementById("btnCancel"), "f");
         __classPrivateFieldSet(this, _Dialog_btnSubmit, shadowRoot.getElementById("btnSubmit"), "f");
+    }
+    static get observedAttributes() {
+        return ["loading", "open", "title", "content", "canceltext", "submittext"];
     }
     get open() {
         return this.getAttribute("open") !== null;

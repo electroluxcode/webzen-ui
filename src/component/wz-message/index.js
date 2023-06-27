@@ -31,9 +31,6 @@ let toastDetails = {
     mode: 'dark',
 };
 class Message {
-    static get observedAttributes() {
-        return ['type'];
-    }
     constructor(e) {
         this.removeToast = (toast_electrolux) => {
             toast_electrolux.classList.add('hide');
@@ -95,6 +92,9 @@ class Message {
             fontStyle.setAttribute('type', 'text/css');
             document.body.appendChild(fontStyle);
         }
+    }
+    static get observedAttributes() {
+        return ['type'];
     }
 }
 export default Message;

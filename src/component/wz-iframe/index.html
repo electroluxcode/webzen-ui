@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="index.js"></script>
+
+    <style>
+        #test {
+            background: red;
+        }
+
+        /* 直到影子dom的dom结构被添加之后才会出现，非常有用 */
+        :not(:defined) {
+            display: block;
+            opacity: 0;
+            transition: all .3s ease;
+        }
+
+        .ddd {
+            width: 200px;
+            background: red;
+            height: 100pX;
+        }
+    </style>
+</head>
+
+<body>
+    <wz-iframe title="测试" background="rgb(14, 27, 48)" color="white">
+        <div>
+            <div class="ddd">
+                width
+            </div>
+        </div>
+
+
+    </wz-iframe>
+
+    <script>
+
+
+        customElements.whenDefined('my-div').then(() => {
+            console.log("开始define")
+        });
+        setTimeout(() => {
+            // console.log(document.querySelector("my-div").shadowRoot.querySelector(`slot[name="container"]`).assignedElements({ flatten: true }))
+        }, 3000);
+    </script>
+</body>
+
+</html>

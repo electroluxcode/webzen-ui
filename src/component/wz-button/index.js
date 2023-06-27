@@ -14,11 +14,6 @@ import Base from '../wz-base.js';
 // @ts-ignore
 import style from './index.css?inline' assert { type: 'css' };
 class button extends Base {
-    static get observedAttributes() {
-        return [
-            "disabled",
-        ];
-    }
     constructor() {
         super();
         // step1 :定义 属性 和 监听的属性
@@ -32,6 +27,11 @@ class button extends Base {
           </button>
           `;
         __classPrivateFieldSet(this, _button_btnEl, shadowRoot.getElementById("button"), "f");
+    }
+    static get observedAttributes() {
+        return [
+            "disabled",
+        ];
     }
     focus() {
         __classPrivateFieldGet(this, _button_btnEl, "f").focus();
