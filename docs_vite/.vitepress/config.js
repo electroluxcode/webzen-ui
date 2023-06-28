@@ -50,6 +50,7 @@ export default defineConfig({
           items: [
             { text: "message", link: "/components/message" },
             { text: "dialog", link: "/components/dialog" },
+            { text: "iframe", link: "/components/iframe" },
           ]
         },
         // {

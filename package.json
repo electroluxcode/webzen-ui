@@ -70,9 +70,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "jsonfile": "^6.1.0",
+    "pagefind": "^0.12.0",
     "path": "^0.12.7",
     "terser-webpack-plugin": "^4.2.3",
     "vitepress": "^1.0.0-alpha.75",
-    "vitepress-plugin-pagefind": "^0.2.3"
+    "vitepress-plugin-pagefind": "^0.2.4"
   }
 }
