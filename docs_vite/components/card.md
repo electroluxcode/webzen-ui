@@ -14,7 +14,7 @@ import { onMounted } from 'vue'
 
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 
-# message
+# card
 
 卡片组件(注意本身设计是为了大屏设计的，如果需要使用需要提前设置父容器布局(宽高))
 
@@ -266,7 +266,7 @@ interface bodyConfigType {
         height: 400px;
     }
 
-    .container {
+    .card_container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -289,7 +289,7 @@ interface bodyConfigType {
     }
 
     @media screen and (max-width:1000px) {
-        .container {
+        .card_container {
             display: flex;
             /* width: 60%; */
             flex-direction: column;
@@ -308,7 +308,7 @@ interface bodyConfigType {
 </style>
 
 <div class="layout">
-    <div class="container">
+    <div class="card_container">
       <div class="container_item">1</div>
       <div class="container_item">2</div>
       <div class="container_item">3</div>
@@ -330,7 +330,7 @@ interface bodyConfigType {
         height: 400px;
     }
 
-    .container {
+    .card_container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -353,7 +353,7 @@ interface bodyConfigType {
     }
 
     @media screen and (max-width:1000px) {
-        .container {
+        .card_container {
             display: flex;
             /* width: 60%; */
             flex-direction: column;
@@ -372,7 +372,7 @@ interface bodyConfigType {
 </style>
 
 <div class="layout">
-    <div class="container">
+    <div class="card_container">
       <div class="container_item">1</div>
       <div class="container_item">2</div>
       <div class="container_item">3</div>
@@ -406,7 +406,7 @@ interface bodyConfigType {
             height: 400px;
         }
 
-        .container {
+        .card_container {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
@@ -429,7 +429,7 @@ interface bodyConfigType {
         }
 
         @media screen and (max-width:1000px) {
-            .container {
+            .card_container {
                 display: flex;
                 /* width: 60%; */
                 flex-direction: column;
@@ -448,7 +448,7 @@ interface bodyConfigType {
     </style>
 
   <div class="layout">
-      <div class="container">
+      <div class="card_container">
           <div class="container_item_card">
           <wz-card header-config='{
                       cardTitleTargetColor: " rgba(44, 123, 76, 0)",
@@ -503,7 +503,7 @@ interface bodyConfigType {
             height: 400px;
         }
 
-        .container {
+        .card_container {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
@@ -526,7 +526,7 @@ interface bodyConfigType {
         }
 
         @media screen and (max-width:1000px) {
-            .container {
+            .card_container {
                 display: flex;
                 /* width: 60%; */
                 flex-direction: column;
@@ -545,7 +545,7 @@ interface bodyConfigType {
     </style>
 
   <div class="layout">
-      <div class="container">
+      <div class="card_container">
           <div class="container_item_card">
           <wz-card header-config='{
                       cardTitleTargetColor: " rgba(44, 123, 76, 0)",
