@@ -1,9 +1,8 @@
 {
   
   "compilerOptions": {
-    "target": "ES6",
-    // "lib": ["es2015"],
-    "module": "ES2022" /* Specify what module code is generated. */,
+    "target": "esnext", // 使用最新的 ECMAScript 版本
+    "module": "esnext", // 生成 ECMAScript 模块
    "lib": ["ES2019"],
     // "rootDir": "./",                                  /* Specify the root folder within your source files. */
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */

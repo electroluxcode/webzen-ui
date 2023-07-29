@@ -1,4 +1,5 @@
 export default class Base extends HTMLElement {
+    static urlPrefix = 'https://cdn.jsdelivr.net/npm/webzen-ui-icons';
     // this.slots : Object
     constructor() {
         super();
@@ -46,4 +47,3 @@ export default class Base extends HTMLElement {
         });
     }
 }
-Base.urlPrefix = 'https://cdn.jsdelivr.net/npm/webzen-ui-icons';

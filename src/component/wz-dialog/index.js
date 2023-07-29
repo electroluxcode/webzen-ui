@@ -1,28 +1,22 @@
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _Dialog_dialog, _Dialog_title, _Dialog_content, _Dialog_btnClose, _Dialog_btnCancel, _Dialog_btnSubmit;
 import Base from "../wz-base.js";
 import "../wz-button/index.js";
 // @ts-ignore
-import style from "./index.css?inline" assert { type: "text" };
+import style from "./index.css?inline" assert { type: "css" };
 class Dialog extends Base {
+    #dialog;
+    #title;
+    #content;
+    #btnClose;
+    #btnCancel;
+    #btnSubmit;
+    static alert;
+    static show;
+    static open;
+    static get observedAttributes() {
+        return ["loading", "open", "title", "content", "canceltext", "submittext"];
+    }
     constructor() {
         super();
-        _Dialog_dialog.set(this, void 0);
-        _Dialog_title.set(this, void 0);
-        _Dialog_content.set(this, void 0);
-        _Dialog_btnClose.set(this, void 0);
-        _Dialog_btnCancel.set(this, void 0);
-        _Dialog_btnSubmit.set(this, void 0);
         const shadowRoot = this.attachShadow({ mode: "open" });
         this.adoptedStyle(style);
         shadowRoot.innerHTML = `
@@ -41,15 +35,12 @@ class Dialog extends Base {
         </form>
       </dialog>
         `;
-        __classPrivateFieldSet(this, _Dialog_dialog, shadowRoot.getElementById("dialog"), "f");
-        __classPrivateFieldSet(this, _Dialog_title, shadowRoot.getElementById("title"), "f");
-        __classPrivateFieldSet(this, _Dialog_content, shadowRoot.querySelector("#content"), "f");
-        __classPrivateFieldSet(this, _Dialog_btnClose, shadowRoot.getElementById("btnClose"), "f");
-        __classPrivateFieldSet(this, _Dialog_btnCancel, shadowRoot.getElementById("btnCancel"), "f");
-        __classPrivateFieldSet(this, _Dialog_btnSubmit, shadowRoot.getElementById("btnSubmit"), "f");
-    }
-    static get observedAttributes() {
-        return ["loading", "open", "title", "content", "canceltext", "submittext"];
+        this.#dialog = shadowRoot.getElementById("dialog");
+        this.#title = shadowRoot.getElementById("title");
+        this.#content = shadowRoot.querySelector("#content");
+        this.#btnClose = shadowRoot.getElementById("btnClose");
+        this.#btnCancel = shadowRoot.getElementById("btnCancel");
+        this.#btnSubmit = shadowRoot.getElementById("btnSubmit");
     }
     get open() {
         return this.getAttribute("open") !== null;
@@ -82,25 +73,24 @@ class Dialog extends Base {
         this.open = false;
     }
     connectedCallback() {
-        __classPrivateFieldGet(this, _Dialog_dialog, "f").addEventListener('click', (ev) => {
-            var _a;
-            if ((_a = ev === null || ev === void 0 ? void 0 : ev.target) === null || _a === void 0 ? void 0 : _a.closest('[close]')) {
+        this.#dialog.addEventListener('click', (ev) => {
+            if (ev?.target?.closest('[close]')) {
                 this.open = false;
                 this.dispatchEvent(new Event("cancel"));
             }
         });
-        __classPrivateFieldGet(this, _Dialog_dialog, "f").addEventListener('close', () => {
+        this.#dialog.addEventListener('close', () => {
             this.open = false;
             this.dispatchEvent(new Event("close"));
             console.log('close');
         });
-        __classPrivateFieldGet(this, _Dialog_dialog, "f").addEventListener('cancel', () => {
+        this.#dialog.addEventListener('cancel', () => {
             this.open = false;
             this.dispatchEvent(new Event("cancel"));
             console.log('cancel');
         });
-        if (__classPrivateFieldGet(this, _Dialog_btnSubmit, "f")) {
-            __classPrivateFieldGet(this, _Dialog_btnSubmit, "f").addEventListener('click', () => {
+        if (this.#btnSubmit) {
+            this.#btnSubmit.addEventListener('click', () => {
                 this.dispatchEvent(new Event("submit"));
             });
         }
@@ -108,30 +98,29 @@ class Dialog extends Base {
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === "open") {
             if (newValue !== null) {
-                __classPrivateFieldGet(this, _Dialog_dialog, "f").showModal();
+                this.#dialog.showModal();
                 setTimeout(() => {
-                    __classPrivateFieldGet(this, _Dialog_btnClose, "f").focus();
+                    this.#btnClose.focus();
                 }, 50);
             }
             else {
-                __classPrivateFieldGet(this, _Dialog_dialog, "f").close();
+                this.#dialog.close();
             }
         }
         if (name === "title") {
-            __classPrivateFieldGet(this, _Dialog_title, "f").textContent = newValue;
+            this.#title.textContent = newValue;
         }
         if (name === "content") {
-            __classPrivateFieldGet(this, _Dialog_content, "f").textContent = newValue;
+            this.#content.textContent = newValue;
         }
-        if (name === "canceltext" && __classPrivateFieldGet(this, _Dialog_btnCancel, "f")) {
-            __classPrivateFieldGet(this, _Dialog_btnCancel, "f").textContent = newValue;
+        if (name === "canceltext" && this.#btnCancel) {
+            this.#btnCancel.textContent = newValue;
         }
-        if (name === "submittext" && __classPrivateFieldGet(this, _Dialog_btnSubmit, "f")) {
-            __classPrivateFieldGet(this, _Dialog_btnSubmit, "f").textContent = newValue;
+        if (name === "submittext" && this.#btnSubmit) {
+            this.#btnSubmit.textContent = newValue;
         }
     }
 }
-_Dialog_dialog = new WeakMap(), _Dialog_title = new WeakMap(), _Dialog_content = new WeakMap(), _Dialog_btnClose = new WeakMap(), _Dialog_btnCancel = new WeakMap(), _Dialog_btnSubmit = new WeakMap();
 if (!customElements.get("wz-dialog")) {
     customElements.define("wz-dialog", Dialog);
 }
@@ -165,7 +154,10 @@ Dialog.open = function ({ type = "", title = "", content = "", submittext = "", 
 Dialog.show = function (type, ...params) {
     console.log(params[0]);
     if (typeof params[0] === 'object') {
-        return this.open(Object.assign({ type }, params[0]));
+        return this.open({
+            type,
+            ...params[0]
+        });
     }
     // 简写语法
     const [content, onsubmit = () => { }, oncancel = () => { }] = params;
@@ -180,7 +172,10 @@ Dialog.show = function (type, ...params) {
 Dialog.show = function (type, ...params) {
     console.log(params[0]);
     if (typeof params[0] === 'object') {
-        return this.open(Object.assign({ type }, params[0]));
+        return this.open({
+            type,
+            ...params[0]
+        });
     }
     // 简写语法
     const [content, onsubmit = () => { }, oncancel = () => { }] = params;

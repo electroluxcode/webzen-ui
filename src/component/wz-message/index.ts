@@ -11,9 +11,7 @@ interface baseType {
 // baseStyle.setAttribute("type", "text/css")
 // document.head.appendChild(baseStyle)
 
-let notifications = document.createElement('ul');
-notifications.setAttribute('class', 'notifications_electrolux');
-document.body.appendChild(notifications);
+
 
 let iconStyle = document.createElement('script');
 iconStyle.setAttribute(
@@ -27,64 +25,95 @@ let toastDetails = {
   timer: 2000,
   success: {
     icon: 'solid/circle-check',
-    color:"#0abf30"
+    color: "#0abf30"
   },
   error: {
     icon: 'solid/circle-xmark',
-    color:"#e24d4c"
+    color: "#e24d4c"
   },
   warning: {
     icon: 'solid/circle-exclamation',
-    color:"#e9bd0c"
+    color: "#e9bd0c"
   },
   info: {
     icon: 'solid/circle-info',
-    color:"#3498db"
+    color: "#3498db"
   },
   mode: 'dark',
 };
 
 type toastDetailsType = keyof Omit<typeof toastDetails, 'timer' | 'mode'>;
 
-class Message  {
-  // step1 :定义 属性 和 监听的属性
+function modeCssInit(config: Record<"mode", any>, appendDom: any) {
+  if (config.mode == 'dark') {
+    let fontStyle = document.createElement('link');
+    fontStyle.setAttribute('rel', 'stylesheet');
+    fontStyle.setAttribute(
+      'href',
+      'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageDark.css'
+    );
+    fontStyle.setAttribute(
+      'id',
+      'electrolux_message'
+    );
+    fontStyle.setAttribute('type', 'text/css');
+    appendDom.appendChild(fontStyle);
+  }
+  if (config.mode == 'light') {
+    let fontStyle = document.createElement('link');
+    fontStyle.setAttribute('rel', 'stylesheet');
+    fontStyle.setAttribute(
+      'id',
+      'electrolux_message'
+    );
+    fontStyle.setAttribute(
+      'href',
+      'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageLight.css'
+    );
+    fontStyle.setAttribute('type', 'text/css');
+    appendDom.appendChild(fontStyle);
+  }
 
+}
+
+function modeHtmlInit(config: Record<"mode" | "id" | "text" | "timer", any>, that: any, toastDetails: any) {
+  const icon = toastDetails[config.id]?.icon ?? '';
+  const color = toastDetails[config.id]?.color ?? '';
+  const toast_electrolux = document.createElement('li'); // 创建li元素
+  toast_electrolux.setAttribute("style",`background: white;color: black;`)
+  toast_electrolux.className = `toast_electrolux ${config.id}`; // 为li元素新增样式
+  toast_electrolux.innerHTML = `<div class="column" >
+                <wz-icon name="${icon}" color="${color}"></wz-icon>
+                <span>${config.text}</span>
+                </div>
+            `;
+  // @ts-ignore
+  that._notifications.appendChild(toast_electrolux); // 添加元素到 notifications ul
+  // 2秒后 隐藏toast
+  setTimeout(() => that.removeToast(toast_electrolux), config.timer);
+}
+
+class Message extends Base {
+  // step1 :定义 属性 和 监听的属性
   static createToast: (id: any, text: any, timer: any, mode: string) => void;
   static removeToast: (toast_electrolux: any) => void;
-
+  shadowRootInit;
+  _notifications
   static get observedAttributes() {
     return ['type'];
   }
   constructor(e: any) {
-    let list = JSON.parse(JSON.stringify(e))
-    console.log(e)
-    if (list.mode == 'dark') {
-      let fontStyle = document.createElement('link');
-      fontStyle.setAttribute('rel', 'stylesheet');
-      fontStyle.setAttribute(
-        'href',
-        'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageDark.css'
-      );
-      fontStyle.setAttribute(
-        'id',
-        'electrolux_message'
-      );
-      fontStyle.setAttribute('type', 'text/css');
-      document.body.appendChild(fontStyle);
-    } else {
-      let fontStyle = document.createElement('link');
-      fontStyle.setAttribute('rel', 'stylesheet');
-      fontStyle.setAttribute(
-        'id',
-        'electrolux_message'
-      );
-      fontStyle.setAttribute(
-        'href',
-        'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageLight.css'
-      );
-      fontStyle.setAttribute('type', 'text/css');
-      document.body.appendChild(fontStyle);
-    }
+    super()
+    let list = JSON.parse(JSON.stringify({ mode: "dark" }))
+    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.shadowRootInit = shadowRoot
+    let notifications = document.createElement('ul');
+    notifications.setAttribute('class', 'notifications_electrolux');
+    this._notifications = notifications
+    this.shadowRootInit.appendChild(notifications);
+
+
+    modeCssInit(list, this.shadowRootInit)
   }
 
 
@@ -102,42 +131,13 @@ class Message  {
     timer: number,
     mode: string
   ) => {
-    // console.log(id)
-    if (mode == 'dark') {
-      const icon = toastDetails[id]?.icon ?? '';
-      const color = toastDetails[id]?.color ?? '';
-      const toast_electrolux = document.createElement('li'); // 创建li元素
-  
-      toast_electrolux.className = `toast_electrolux ${id}`; // 为li元素新增样式
-      toast_electrolux.innerHTML = `<div class="column" >
-                    <wz-icon name="${icon}" color="${color}"></wz-icon>
-                    <span>${text}</span>
-                    </div>
-                `;
-      notifications.appendChild(toast_electrolux); // 添加元素到 notifications ul
-      // 2秒后 隐藏toast
-      setTimeout(() => this.removeToast(toast_electrolux), timer);
-    } else {
-      const icon = toastDetails[id]?.icon ?? '';
-      const color = toastDetails[id]?.color ?? '';
-      const toast_electrolux = document.createElement('li'); // 创建li元素
-      toast_electrolux.className = `toast_electrolux ${id}`; // 为li元素新增样式
-      toast_electrolux.innerHTML = `<div class="column" >
-                    <wz-icon name="${icon}" color="${color}"></wz-icon>
-                    <span>${text}</span>
-                    </div>
-                `;
-      notifications.appendChild(toast_electrolux); // 添加元素到 notifications ul
-      // 2秒后 隐藏toast
-      let that =this
-      setTimeout(() => that.removeToast(toast_electrolux), timer);
-    }
+    modeHtmlInit({id,text,timer,mode},this,toastDetails)
   };
- 
+
 }
 
 
 
+customElements.define("wz-message", Message);
 
-
-export default Message ;
+// export default Message;

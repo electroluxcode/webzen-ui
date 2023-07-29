@@ -1,4 +1,4 @@
-import{p as o,ac as n,D as p,o as e,c as t,z as r,G as c,B as D,R as F,a as i}from"./chunks/framework.bc40fd44.js";import"./chunks/index.4ed993c7.js";const y=F(`<h1 id="iframe" tabindex="-1">iframe <a class="header-anchor" href="#iframe" aria-label="Permalink to &quot;iframe&quot;">​</a></h1><p>弹窗组件，自定义更加高了</p><h2 id="使用方式" tabindex="-1">使用方式 <a class="header-anchor" href="#使用方式" aria-label="Permalink to &quot;使用方式&quot;">​</a></h2><div class="language-html"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">使用方式,直接用就可以了</span></span>
+import{p as o,ac as l,D as e,o as p,c as t,z as r,G as c,B as i,R as D,a as y}from"./chunks/framework.bc40fd44.js";import"./chunks/index.4ed993c7.js";const F=D(`<h1 id="iframe" tabindex="-1">iframe <a class="header-anchor" href="#iframe" aria-label="Permalink to &quot;iframe&quot;">​</a></h1><p>弹窗组件，自定义更加高了</p><h2 id="使用方式" tabindex="-1">使用方式 <a class="header-anchor" href="#使用方式" aria-label="Permalink to &quot;使用方式&quot;">​</a></h2><div class="language-html"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">使用方式,直接用就可以了</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;">&lt;!-- 引入 --&gt;</span></span>
 <span class="line"><span style="color:#89DDFF;">    &lt;</span><span style="color:#F07178;">script</span><span style="color:#89DDFF;"> </span><span style="color:#C792EA;">type</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">module</span><span style="color:#89DDFF;">&quot;</span><span style="color:#89DDFF;"> </span><span style="color:#C792EA;">src</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-iframe/index.js</span><span style="color:#89DDFF;">&quot;</span><span style="color:#89DDFF;">&gt;&lt;/</span><span style="color:#F07178;">script</span><span style="color:#89DDFF;">&gt;</span></span>
@@ -19,21 +19,63 @@ import{p as o,ac as n,D as p,o as e,c as t,z as r,G as c,B as D,R as F,a as i}fr
 <span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#89DDFF;">}</span></span>
 <span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#89DDFF;">&lt;/</span><span style="color:#F07178;">style</span><span style="color:#89DDFF;">&gt;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#89DDFF;">&lt;/</span><span style="color:#F07178;">body</span><span style="color:#89DDFF;">&gt;</span></span></code></pre></div><h2 id="传参" tabindex="-1">传参 <a class="header-anchor" href="#传参" aria-label="Permalink to &quot;传参&quot;">​</a></h2><p>第一个参数是头部的title 剩下的参数都是见文知意的</p>`,6),d={class:"wrap"},u=JSON.parse('{"title":"iframe","description":"","frontmatter":{},"headers":[],"relativePath":"components/iframe.md","filePath":"components/iframe.md","lastUpdated":null}'),C={name:"components/iframe.md"},h=Object.assign(C,{setup(m){return o(()=>{n(()=>import("./chunks/index.6f4c3ccf.js"),["assets/chunks/index.6f4c3ccf.js","assets/chunks/wz-base.0300f7d9.js"]),n(()=>import("./chunks/index.569e5d43.js"),["assets/chunks/index.569e5d43.js","assets/chunks/wz-base.0300f7d9.js"]).then(s=>{console.log(s),window.dialog=s.default,window.dialogConfirm=()=>{let a=document.createElement("div");a.innerHTML=`
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#89DDFF;">&lt;/</span><span style="color:#F07178;">body</span><span style="color:#89DDFF;">&gt;</span></span></code></pre></div><h2 id="传参" tabindex="-1">传参 <a class="header-anchor" href="#传参" aria-label="Permalink to &quot;传参&quot;">​</a></h2><p>第一个参数是头部的title 剩下的参数都是见文知意的</p>`,6),d={class:"wrap"},g=JSON.parse('{"title":"iframe","description":"","frontmatter":{},"headers":[],"relativePath":"components/iframe.md","filePath":"components/iframe.md","lastUpdated":1687912974000}'),_={name:"components/iframe.md"},f=Object.assign(_,{setup(m){return o(()=>{l(()=>import("./chunks/index.2b93b198.js"),["assets/chunks/index.2b93b198.js","assets/chunks/wz-base.51abbcea.js"]);let s=document.createElement("link");s.setAttribute("rel","stylesheet"),s.setAttribute("href","https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"),document.head.appendChild(s),l(()=>import("./chunks/index.bec32224.js"),["assets/chunks/index.bec32224.js","assets/chunks/wz-base.51abbcea.js"]).then(n=>{console.log(n),window.dialog=n.default,window.dialogConfirm=()=>{let a=document.createElement("div");a.innerHTML=`
         <wz-iframe title="测试" background="rgb(14, 27, 48)" color="white">
-            <div>
-                <div class="wz_iframe_item" >
-                    width
-                </div>
-            </div>
+            <div class="mask_player_container">
+       
+         <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.vmPWowgdWTfOcPhc5fehCgHaEo?w=243&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="mask_player_container_video"> </img>
+
+        <div class="mask_player_container_tool">
+          <div class="mask_player_container_tool_left">
+            <i class="fa fa-pause"></i>	
+            <i class="fa fa-gear"></i>	
+          </div>
+          <div class="mask_player_container_tool_right">
+            <i class="fa fa-arrows-alt"></i>
+          </div>
+        </div>
+      </div>
+
         </wz-iframe>
         <style>
-            .wz_iframe_item{
-                width:400px;
-                height:200px;
-                background:red;
-                margin:0 auto
-            }
+           
+
+
+
+.mask_player_container_video {
+  width: 850px;
+  position: relative;
+  height:400px;
+}
+
+.mask_player_container_tool {
+  height: 30px;
+  background: rgb(48, 47, 47);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 0px 10px;
+  position: relative;
+
+bottom: 30px;
+}
+.mask_player_container_tool_right {
+  line-height: 100%;
+  align-self: center;
+  margin: 10px;
+}
+
+.mask_player_container_tool_left {
+  line-height: 100%;
+  align-self: center;
+  margin: 10px;
+}
+.fa{
+    margin:0px  15px 0px 0px;
+}
+.mask_player_title_close{
+    cursor: pointer;
+}
         <//style>
                 
-                `,document.body.appendChild(a)}})}),(s,a)=>{const l=p("wz-button");return e(),t("div",null,[y,r("div",d,[c(l,{type:"primary",onclick:"dialogConfirm()"},{default:D(()=>[i("打开iframe")]),_:1})])])}}});export{u as __pageData,h as default};
+                `,document.body.appendChild(a)}})}),(s,n)=>{const a=e("wz-button");return p(),t("div",null,[F,r("div",d,[c(a,{type:"primary",onclick:"dialogConfirm()"},{default:i(()=>[y("打开iframe")]),_:1})])])}}});export{g as __pageData,f as default};

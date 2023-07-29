@@ -29,13 +29,13 @@
 </head>
 
 <body>
-    <wz-iframe title="测试" background="rgb(14, 27, 48)" color="white">
+    <wz-card headerConfig='{"code":200}' >
         <div>
             <div class="ddd">
                 width
             </div>
         </div>
-    </wz-iframe>
+    </wz-card>
 
     <script>
 
@@ -44,10 +44,14 @@
             console.log("开始define")
         });
         setTimeout(() => {
-            document.querySelector("wz-iframe").innerHTML=`
-            <h1>2323</h1>
-            `
+            // console.log(document.querySelector("my-div").shadowRoot.querySelector(`slot[name="container"]`).assignedElements({ flatten: true }))
         }, 3000);
+
+        setTimeout(() => {
+            document.querySelector("wz-card").setAttribute("header-config",JSON.stringify({
+                "code":200
+            }))
+        }, 1000);
     </script>
 </body>
 

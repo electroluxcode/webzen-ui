@@ -48,9 +48,11 @@ export default defineConfig({
         {
           text: '交互',
           items: [
+            { text: "card", link: "/components/card" },
             { text: "message", link: "/components/message" },
             { text: "dialog", link: "/components/dialog" },
             { text: "iframe", link: "/components/iframe" },
+            
           ]
         },
         // {

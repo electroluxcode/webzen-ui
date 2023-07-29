@@ -1,0 +1,20 @@
+{
+    "wz-icon": {
+        "prefix": "wz-icon",
+        "body": [
+            "<wz-icon name=\"image\" type=\"${1|solid,light|}\"></wz-icon>"
+        ],
+    },
+    "wz-button": {
+        "prefix": "wz-button",
+        "body": [
+            "<wz-button type=\"${1|primary,danger,common, |}\"  size=\"${2|default,small,large|}\" >primary</wz-button>"
+        ],
+    },
+    "wz-cdn": {
+        "prefix": "wz-cdn",
+        "body": [
+            "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-button/index.js\">"
+        ],
+    },
+}

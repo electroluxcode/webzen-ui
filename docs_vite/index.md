@@ -5,7 +5,7 @@ title: Home
 
 hero:
   name: Webzen-ui
-  text: 面向未来的原生组件库
+  text: 兴趣使然的原生组件库
   tagline: Web Components
   image:
     src: "https://cdn.jsdelivr.net/npm/electroluxasset@1.0.8/image/svg/atom.svg"

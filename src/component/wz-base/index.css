@@ -1,0 +1,8 @@
+:host {
+    /* 头部渐变色 */
+    --body_color: rgba(44, 123, 76, 0);
+}
+
+.container{
+    background:var(--body_color)
+}

@@ -1,0 +1,21 @@
+var s=Object.defineProperty;var l=(r,t,e)=>t in r?s(r,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):r[t]=e;var o=(r,t,e)=>(l(r,typeof t!="symbol"?t+"":t,e),e);import{B as c}from"./wz-base.51abbcea.js";const n=`:host{--card_title_target_color: rgba(44, 123, 76, 0);--card_title_color: rgba(44, 123, 76, .81);--card_header_color:var(linear-gradient(90deg, var(--card_title_color) 0%, var(--card_title_target_color) 100%));--card_title_height: 36px;--card_body_color: rgba(0, 0, 0, .3)}.card{color:#fff;position:relative;width:100%;height:100%;transition:all .3s ease-in-out;border-radius:10px;border:1.5px solid rgba(240,240,240,1);overflow:hidden;font-size:12px}.card_header{position:relative;display:flex;justify-content:space-between;background:black}.card_header_gradient{display:flex;position:relative;justify-content:space-between;z-index:99;align-items:center;height:var(--card_title_height);padding:0 10px}.card_header_wrapper{border-bottom:1.5px solid rgba(240,240,240,1);position:relative;font-size:13px}.card_header_wrapper_before{width:100%;background:linear-gradient(90deg,var(--card_title_color) 0%,var(--card_title_target_color) 100%);content:"";position:absolute;height:var(--card_title_height);backdrop-filter:blur(2px);border-radius:5px 5px 0 0;align-items:center}.card_mask{background:var(--card_body_color);border-radius:10px;backdrop-filter:blur(6px);position:absolute;width:100%;height:100%;z-index:-1;transition:all .3s ease-in-out;overflow:hidden}.padding{padding:2px 10px;border-radius:5px 5px 0 0}
+`;function d(r){let t=r;return t=Function("return "+t)(),t}function _(r,t,e){if(!t||!r){e.shadowRootInit.querySelector(".card_header_wrapper").style.borderBottom="unset",e.shadowRootInit.querySelector(".card").style.border="unset",e.shadowRootInit.querySelector(".card_header_wrapper_before").style.width="30%",console.log("参数传递有漏");return}t.cardBodyColor?e.style.setProperty("--card_body_color",t.cardBodyColor):e.style.setProperty("--card_body_color","transparent"),r.cardTitleTargetColor?(e.style.setProperty("--card_title_target_color",r.cardTitleTargetColor),e.style.setProperty("--card_title_color",r.cardTitleColor),e.shadowRootInit.querySelector(".card_header_wrapper_before").style.width="30%",e.shadowRootInit.querySelector(".card_header_wrapper").style.borderBottom="unset",e.shadowRootInit.querySelector(".card").style.border="unset"):(e.shadowRootInit.querySelector(".card_header_wrapper_before").style.width="100%",e.shadowRootInit.querySelector(".card_header_wrapper_before").style.background=r.cardTitleColor),console.log("headerConfig.fontColor:",r,t),r.fontColor&&(console.log("headerConfig.fontColor:",r,t),e.shadowRootInit.querySelector(".card").style.color=r.fontColor)}class h extends c{constructor(){super();o(this,"shadowRootInit");o(this,"close");o(this,"headerConfig");o(this,"bodyConfig");this.close=!1;const e=this.attachShadow({mode:"open"});this.adoptedStyle(n),this.shadowRootInit=e}static get observedAttributes(){return["header-config","body-config"]}connectedCallback(){console.log("connectedCallback:",this),this.render({}),this.headerConfig=d(this.getAttribute("header-config")),this.bodyConfig=d(this.getAttribute("body-config")),this.closeRender(),_(this.headerConfig,this.bodyConfig,this)}closeRender(){}attributeChangedCallback(e,a,i){i=d(i)}render(e){let a=document.createElement("template");a.innerHTML=`
+    <div class="card" >
+        <div class="card_mask"></div>
+  
+        <div class="card_header_wrapper">
+            <div class="card_header_wrapper_before"> </div>
+            <div class="card_header_gradient ">
+                <div class="card_header_left">
+                  <slot name="card_header_left"></slot>
+                </div>
+                <div class="card_header_right">
+                    <slot name="card_header_right"></slot>
+                </div>
+            </div>
+        </div>
+        <div class="card_body ">
+          <slot name="card_container"></slot>
+        </div>
+    </div>
+        `,this.shadowRootInit.appendChild(a.content)}switchActive(){this.close?this.shadowRootInit.querySelector(".card").style.height="100%":this.shadowRootInit.querySelector(".card").style.height="var(--card_title_height)",this.close=!this.close}}customElements.define("wz-card",h);

@@ -1,6 +1,6 @@
 {
   "name": "webzen-ui",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "description": "基于web-component的UI框架,支持全量引入和按需引入(开发中)",
   "source": "src/index.ts",
   "types": "src/types/index.d.ts",
@@ -13,6 +13,13 @@
     "docs:build": "vitepress build docs_vite",
     "docs:serve": "vitepress serve docs_vite",
     "docs:preview": "vitepress preview docs_vite"
+  },
+  "contributes": {
+    "snippets": [
+      {    
+        "path": "./ts.code-snippets"
+      }
+    ]
   },
   "homepage": "https://gitee.com/Electrolux/",
   "repository": {
