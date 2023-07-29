@@ -5,7 +5,7 @@ import{d as $,o as l,c as h,r as f,a as Y,t as E,n as F,_ as M,u as rt,g as gt,b
 \r
 \`\`\`html\r
 <!-- 引入 --\r
-<script type="module" src="https://cdn.jsdeliv`,cover:""}},{route:"/components/card",meta:{title:"message",date:"2023-07-29 13:42:15",tag:[],description:`\r
+<script type="module" src="https://cdn.jsdeliv`,cover:""}},{route:"/components/card",meta:{title:"card",date:"2023-07-29 13:47:08",tag:[],description:`\r
 卡片组件(注意本身设计是为了大屏设计的，如果需要使用需要提前设置父容器布局(宽高))\r
 \r
 \r
@@ -35,7 +35,7 @@ import{d as $,o as l,c as h,r as f,a as Y,t as E,n as F,_ as M,u as rt,g as gt,b
     \r
   }\r
     \r
-</s`,cover:""}},{route:"/components/iframe",meta:{title:"iframe",date:"2023-06-28 08:42:54",tag:[],description:`\r
+</s`,cover:""}},{route:"/components/iframe",meta:{title:"iframe",date:"2023-07-29 13:43:09",tag:[],description:`\r
 弹窗组件，自定义更加高了\r
 \r
 <style\r
@@ -47,7 +47,7 @@ import{d as $,o as l,c as h,r as f,a as Y,t as E,n as F,_ as M,u as rt,g as gt,b
  使用方式\r
 \r
 \`\`\`html\r
-\r`,cover:""}},{route:"/components/message",meta:{title:"message",date:"2023-05-24 10:21:54",tag:[],description:`\r
+\r`,cover:""}},{route:"/components/message",meta:{title:"message",date:"2023-07-29 13:43:09",tag:[],description:`\r
 信息组件,推荐全局黑暗模式\r
 \r
 <style\r
