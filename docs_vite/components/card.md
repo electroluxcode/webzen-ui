@@ -4,8 +4,10 @@ import { onMounted } from 'vue'
   onMounted(() => {
     
     import('../../src/component/wz-card/')
-    document.querySelector("#open").addEventListener("click",()=>{
-        document.querySelector(".wz-card").switchActive()
+    document.querySelectorAll("#open").forEach((e)=>{
+        e.addEventListener("click",(el)=>{  
+            e.parentElement.parentElement.switchActive()
+        })
     })
   })
 </script>
@@ -72,8 +74,6 @@ import { onMounted } from 'vue'
 
 
 ```
-
-
 
 <div style="display:flex;width:100%;height:100px">
     <wz-card style="flex:1;margin:0px 10px" header-config='{
@@ -222,9 +222,11 @@ interface bodyConfigType {
 
 <script type="module">
 
-      document.querySelector("#open").addEventListener("click",()=>{
-          document.querySelector(".wz-card").switchActive()
-      })
+    document.querySelectorAll("#open").forEach((e)=>{
+        e.addEventListener("click",(el)=>{  
+            e.parentElement.parentElement.switchActive()
+        })
+    })
 </script>
 
 ```
@@ -290,7 +292,7 @@ interface bodyConfigType {
 
     @media screen and (max-width:1000px) {
         .card_container {
-            display: flex;
+            /* display: flex; */
             /* width: 60%; */
             flex-direction: column;
 
@@ -298,10 +300,10 @@ interface bodyConfigType {
         .layout {
             margin: 0 auto;
             width: 100%;
-            height: 400vh;
+            /* height: 400vh; */
         }
         .container_item {
-            flex: 1;
+            /* flex: 1; */
 
         }
     }
@@ -391,15 +393,6 @@ interface bodyConfigType {
 
 
 
-
-
-
-
-
-
-
-
-
 <style>
         .layout {
             width: 100%;
@@ -441,16 +434,19 @@ interface bodyConfigType {
                 height: 400vh;
             }
             .container_item_card {
-                flex: 1;
-
+                /* flex: 1; */
+                /* height:auto */
+            }
+            #card_container {
+                height:100px
             }
         }
-    </style>
+</style>
 
   <div class="layout">
       <div class="card_container">
           <div class="container_item_card">
-          <wz-card header-config='{
+          <wz-card  header-config='{
                       cardTitleTargetColor: " rgba(44, 123, 76, 0)",
                       cardTitleColor: " rgba(44, 123, 76, 0.81)",
                       fontColor: "white"
@@ -460,7 +456,10 @@ interface bodyConfigType {
                 <div slot="card_header_left">
                     劳务管理
                 </div>
-                <div slot="card_container">
+                 <div slot="card_header_right">
+                <i id="open" class="fa fa-arrows" style="color: rgb(75, 90, 75);" onclick=""></i>
+            </div>
+                <div id="card_container" slot="card_container">
                     <div >2</div>
                 </div>
           </wz-card>
@@ -470,7 +469,7 @@ interface bodyConfigType {
                   <div slot="card_header_left">
                       ai管理
                   </div>
-                  <div slot="card_container">
+                  <div id="card_container" slot="card_container">
                       <div >2</div>
                   </div>
             </wz-card>
@@ -480,7 +479,7 @@ interface bodyConfigType {
                   <div slot="card_header_left">
                       视频管理
                   </div>
-                  <div slot="card_container">
+                  <div id="card_container" slot="card_container">
                       <div >2</div>
                   </div>
             </wz-card>
@@ -496,7 +495,6 @@ interface bodyConfigType {
 
 
   ```html
-
 <style>
         .layout {
             width: 100%;
@@ -538,16 +536,19 @@ interface bodyConfigType {
                 height: 400vh;
             }
             .container_item_card {
-                flex: 1;
-
+                /* flex: 1; */
+                /* height:auto */
+            }
+            #card_container {
+                height:100px
             }
         }
-    </style>
+</style>
 
   <div class="layout">
       <div class="card_container">
           <div class="container_item_card">
-          <wz-card header-config='{
+          <wz-card  header-config='{
                       cardTitleTargetColor: " rgba(44, 123, 76, 0)",
                       cardTitleColor: " rgba(44, 123, 76, 0.81)",
                       fontColor: "white"
@@ -557,7 +558,10 @@ interface bodyConfigType {
                 <div slot="card_header_left">
                     劳务管理
                 </div>
-                <div slot="card_container">
+                 <div slot="card_header_right">
+                <i id="open" class="fa fa-arrows" style="color: rgb(75, 90, 75);" onclick=""></i>
+            </div>
+                <div id="card_container" slot="card_container">
                     <div >2</div>
                 </div>
           </wz-card>
@@ -567,7 +571,7 @@ interface bodyConfigType {
                   <div slot="card_header_left">
                       ai管理
                   </div>
-                  <div slot="card_container">
+                  <div id="card_container" slot="card_container">
                       <div >2</div>
                   </div>
             </wz-card>
@@ -577,7 +581,7 @@ interface bodyConfigType {
                   <div slot="card_header_left">
                       视频管理
                   </div>
-                  <div slot="card_container">
+                  <div id="card_container" slot="card_container">
                       <div >2</div>
                   </div>
             </wz-card>
@@ -590,7 +594,6 @@ interface bodyConfigType {
       </div>
 
   </div>
-
 
   ```
 
