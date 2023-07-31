@@ -5,7 +5,7 @@ import{d as $,o as l,c as h,r as f,a as Y,t as E,n as F,_ as M,u as rt,g as gt,b
 \r
 \`\`\`html\r
 <!-- 引入 --\r
-<script type="module" src="https://cdn.jsdeliv`,cover:""}},{route:"/components/card",meta:{title:"card",date:"2023-07-29 13:47:08",tag:[],description:`\r
+<script type="module" src="https://cdn.jsdeliv`,cover:""}},{route:"/components/card",meta:{title:"card",date:"2023-07-31 09:41:11",tag:[],description:`\r
 卡片组件(注意本身设计是为了大屏设计的，如果需要使用需要提前设置父容器布局(宽高))\r
 \r
 \r
