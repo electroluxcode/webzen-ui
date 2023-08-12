@@ -48,11 +48,12 @@ export default defineConfig({
         {
           text: '交互',
           items: [
+            { text: "tabs", link: "/components/tabs" },
             { text: "card", link: "/components/card" },
             { text: "message", link: "/components/message" },
             { text: "dialog", link: "/components/dialog" },
             { text: "iframe", link: "/components/iframe" },
-            
+           
           ]
         },
         // {

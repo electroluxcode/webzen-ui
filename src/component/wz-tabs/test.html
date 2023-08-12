@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+    <style>
+        :root {
+            /* 头部渐变色 */
+            --card_title_target_color: rgba(44, 123, 76, 0);
+            /* 头部颜色 */
+            --card_title_color: rgba(44, 123, 76, 0.81);
+            /* 头部高度 */
+            --card_title_height: 36px;
+            /* 身体实体颜色 */
+            --card_body_color: rgba(0, 0, 0, 0.5);
+        }
+
+        .card {
+            /* border: 1px solid rgba(0, 0, 0, 0.1); */
+            color: white;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all .3s ease-in-out;
+            overflow: hidden;
+        }
+
+        /* 分割线 */
+        .card_header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(226, 16, 16, 0.1);
+            background: white;
+            /* z-index: 999; */
+        }
+
+        .card_header_gradient {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            z-index: 999;
+            align-items: center;
+            height: var(--card_title_height);
+            padding: 0px 10px;
+        }
+
+        /* 头部颜色 */
+        .card_header_wrapper::before {
+            width: 100%;
+            background: linear-gradient(90deg, var(--card_title_color) 0%, var(--card_title_target_color) 100%);
+            content: "";
+            position: absolute;
+            height: var(--card_title_height);
+            backdrop-filter: blur(2px);
+            border-radius: 5px 5px 0px 0px;
+            width: 30%;
+            /* z-index: -9; */
+            padding-left: 8px;
+
+            align-items: center;
+        }
+
+
+        .padding {
+            padding: 2px 10px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .card_mask {
+           
+            background: var(--card_body_color);
+            border-radius: 10px;
+            backdrop-filter: blur(6px);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        body {
+            /* background: rgb(13, 36, 11);
+            color: white;
+            transition: all .3s ease-in-out; */
+        }
+    </style>
+
+
+
+
+    <div class="container">
+        <div class="container_item">
+            ddd
+
+            dsadss
+        </div>
+        <div class="container_item">
+            
+            <div class="card" useConfig='{isSoildHeader: "false",isSoildBackground:true}'>
+                
+                <div class="card_mask"></div>
+                
+                <!-- 颜色 -->
+                <div class="card_header_wrapper">
+                    <!-- 内容 -->
+                    <div class="card_header_gradient ">
+                        <div class="card_header_left">
+                            card
+                        </div>
+                        <div class="card_header_right">
+                            <i class="fa fa-arrows"></i>
+                            <!-- card 的 右边2 -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card_body ">
+                    内容
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="container_item">33</div>
+        <div class="container_item"></div>
+        <div class="container_item"></div>
+        <div class="container_item"></div>
+
+    </div>
+
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            width: 96vw;
+            height: 96vh;
+            margin: 0 auto;
+        }
+
+        .container_item {
+            /* background: #00ffe4; */
+        }
+
+        @media screen and (max-width:1000px) {
+            .container {
+                display: flex;
+                width: 60%;
+                flex-direction: column;
+            }
+        }
+    </style>
+
+
+    <script>
+        // 如果不想要渐变 那么 cardTitleTargetColor 留空就可以
+        let headerConfig = {
+            cardTitleTargetColor: " rgba(44, 123, 76, 0)",
+            cardTitleColor: " rgba(44, 123, 76, 0.81)",
+            fontColor: "white"
+        }
+        // 如果不想要背景是实体不填 cardBodyColor 就可以了
+        let bodyConfig = {
+            cardBodyColor: "rgba(0, 0, 0, 0.5)",
+            fontColor: "white"
+        }
+
+        
+        let isSoildHeader = false;
+        let isSoildBackground = true;
+
+        let rootDom = document.querySelector(":root")  //  ""
+
+        let cardTitleColor = getComputedStyle(rootDom).getPropertyValue("--card_title_color")
+        // rootDom.style.setProperty("--bg-color","#1EB3635E")
+
+        // 转成对象
+        let init = document.querySelector(".card").getAttribute("useConfig")
+        let obj = (Function("return " + init))()
+        console.log(obj)
+
+        document.querySelector(".fa").addEventListener('click', () => {
+            let close = false;
+            if (close) {
+                document.querySelector(".card").style.height = "100%"
+            } else {
+                document.querySelector(".card").style.height = "var(--card_title_height)"
+            }
+            close = !close
+        })
+    </script>
+</body>
+
+</html>

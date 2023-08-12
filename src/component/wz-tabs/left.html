@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="left.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+
+<body>
+    <div class="component_container">
+
+        <div class="tab center">
+            <div tab_item_key="1" class="tab_index "><i class="fa fa-close" style="color:rgb(78, 130, 190)"> </i>房间 <i class="fa fa-close" style="color:black"></i></div>
+            <div tab_item_key="2" class="tab_index">
+                房2间
+            </div>
+            <div tab_item_key="3" class="tab_index">房3间</div>
+            <div tab_item_key="1" class="tab_index">房4间</div>
+            <div tab_item_key="1" class="tab_index">房5间</div>
+            <div tab_item_key="1" class="tab_index">房6间</div>
+            <div tab_item_key="1" class="tab_index">房7间</div>
+            <div tab_item_key="1" class="tab_index">222</div>
+            <div tab_item_key="1" class="tab_index">卧室</div>
+            <div class="divline"></div>
+            <!-- <div tab_item_key="1" class="tab_index tab_add"><i class="fa fa-plus"></i></div> -->
+        </div>
+        <div class="container">
+            <div class="container_item " tab_value_key="1" style="">
+                
+                <div style="height:500px;background: red;">
+45
+                </div>
+
+
+            </div>
+            <div class="container_item" tab_value_key="2">33</div>
+            <div class="container_item" tab_value_key="3"></div>
+            <div class="container_item" tab_value_key="5"></div>
+
+        </div>
+    </div>
+    <script>
+
+let a = [1,2,6,4]
+let b = a.map((e,i)=>{
+    // a.splice(i,1)
+    delete a[i]
+    return e
+})
+console.log(a,b)
+
+
+        let tab_values = document.querySelector(".container")
+        let tab_indexs = document.querySelector(".tab")
+        
+        // 初始化 tab_index
+        let first_index = document.querySelector(".tab_index")
+        first_index.classList.add("text_active")
+        
+
+    
+        // 初始化内容  tab_value
+        Array.from(tab_values.children).forEach((e) => {
+            e.style.display="none"
+            // e.classList.remove("move_left")
+        })
+
+        
+        let first_value = document.querySelector(`[tab_value_key="${first_index.getAttribute("tab_item_key")}"]`)
+        // first_value.classList.add("move_left")
+        first_value.style.display="block"
+
+        // 点击 事件
+        tab_indexs.addEventListener("click", (e) => {
+            if (JSON.stringify(e.target.classList).match(/tab_index/)) {   
+                // tab_index 的切换
+                Array.from(tab_indexs.children).forEach((e) => {
+                    e.classList.remove("text_active")
+                })
+                e.target.classList.add("text_active")
+                let target_index = e.target.getAttribute("tab_item_key")
+                
+                // tab_value 的切换
+                Array.from(tab_values.children).forEach((e) => {
+                    e.style.display="none"
+                    // e.classList.remove("move_left")
+                })
+                let target_value = document.querySelector(`[tab_value_key="${target_index}"]`)
+                target_value.style.display="block"
+                // target_value.classList.add("move_left")
+
+
+                // 下拉条
+              
+                let index  = Array.from(tab_indexs.children).indexOf(e.target)
+                document.querySelector(".divline").style.top = index *36 + "px"
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>
