@@ -2,7 +2,9 @@
 import Base from "../wz-base.js";
 // @ts-ignore
 import styles from "./index.css?inline" assert { type: "css" };
-
+// @ts-ignore
+import stylesnight from "./night.css?inline" assert { type: "css" };
+console.log("styles:",styles)
 
 function switchJson(input: string): any {
   let init = input
@@ -45,16 +47,13 @@ function dataCssSwitch(headerConfig:headerConfigType,bodyConfig:bodyConfigType,t
     that.shadowRootInit.querySelector(".card_header_wrapper_before").style.width="100%"
     that.shadowRootInit.querySelector(".card_header_wrapper_before").style.background = headerConfig.cardTitleColor
   }
-  console.log("headerConfig.fontColor:",headerConfig,bodyConfig)
   // 字体颜色
   if(headerConfig.fontColor){
-    console.log("headerConfig.fontColor:",headerConfig,bodyConfig)
     that.shadowRootInit.querySelector(".card").style.color = headerConfig.fontColor
   }
 }
 
 class myDiv extends Base {
-  shadowRootInit: any;
   close: boolean;
   headerConfig!: headerConfigType;
   bodyConfig!: bodyConfigType
@@ -69,16 +68,15 @@ class myDiv extends Base {
     super();
     // 是否 展开
     this.close = false
-    const shadowRoot = this.attachShadow({ mode: "open" });
     this.adoptedStyle(styles);
-    this.shadowRootInit = shadowRoot
+    this.adoptedStyle(stylesnight);
+    
   }
 
   /**
    * @des 初始化数据
    */
   connectedCallback() {
-    console.log("connectedCallback:", this)
     this.render({})
     this.headerConfig = switchJson(this.getAttribute("header-config")!)
     this.bodyConfig = switchJson(this.getAttribute("body-config")!)
