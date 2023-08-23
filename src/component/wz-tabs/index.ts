@@ -59,7 +59,7 @@ function dataJsSwitch(mode:base,that: myDiv) {
       position: relative;
       color: rgb(13, 108, 252);
       border-bottom: 0px;
-      background: rgb(255, 255, 255);
+      
     `
   }
 
@@ -130,7 +130,6 @@ function dataJsSwitch(mode:base,that: myDiv) {
           position: relative;
           color: rgb(13, 108, 252);
           border-bottom: 0px;
-          background: rgb(255, 255, 255);
         `
       }
       let target_index = e.target.getAttribute("tab_item_key")
@@ -209,7 +208,6 @@ function dataCssSwitch(tabs_params: TabsParamsType, that: myDiv) {
 }
 
 class myDiv extends Base {
-  shadowRootInit: any;
   close: boolean;
   Config!: TabsParamsType;
   /**
@@ -223,9 +221,7 @@ class myDiv extends Base {
     super();
     // 是否 展开
     this.close = false
-    const shadowRoot = this.attachShadow({ mode: "open" });
-    // this.adoptedStyle(styles);
-    this.shadowRootInit = shadowRoot
+ 
   }
 
   /**

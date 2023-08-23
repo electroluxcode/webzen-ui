@@ -1,6 +1,5 @@
 import Base from "../wz-base.js";
 
-import "../wz-button/index.js";
 // @ts-ignore
 import style from "./index.css?inline" assert { type: "css" };
 
@@ -24,9 +23,9 @@ class Dialog extends Base {
 
 	constructor() {
 		super();
-		const shadowRoot = this.attachShadow({ mode: "open" });
+		// const shadowRoot = this.attachShadow({ mode: "open" });
 		this.adoptedStyle(style);
-		shadowRoot.innerHTML = `
+		this.shadowRootInit.innerHTML = `
       <dialog class="dialog" id="dialog" part="dialog">
         <slot class="icon" name="icon" id="icon"></slot>
         <form class="form" method="dialog">
@@ -42,12 +41,12 @@ class Dialog extends Base {
         </form>
       </dialog>
         `;
-		this.#dialog = shadowRoot.getElementById("dialog");
-		this.#title = shadowRoot.getElementById("title")! ;
-        this.#content = shadowRoot.querySelector("#content");
-		this.#btnClose = shadowRoot.getElementById("btnClose")!;
-		this.#btnCancel = shadowRoot.getElementById("btnCancel");
-		this.#btnSubmit = shadowRoot.getElementById("btnSubmit");
+		this.#dialog = this.shadowRootInit.getElementById("dialog");
+		this.#title = this.shadowRootInit.getElementById("title")! ;
+        this.#content = this.shadowRootInit.querySelector("#content");
+		this.#btnClose = this.shadowRootInit.getElementById("btnClose")!;
+		this.#btnCancel = this.shadowRootInit.getElementById("btnCancel");
+		this.#btnSubmit = this.shadowRootInit.getElementById("btnSubmit");
 	}
 
 	get open() {

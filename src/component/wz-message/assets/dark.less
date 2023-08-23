@@ -1,0 +1,171 @@
+:host {
+  --darkMessage: #34495e;
+  --lightMessage: #fff;
+  --success_message: #0abf30;
+  --error_message: #e24d4c;
+  --warning_message: #e9bd0c;
+  --info_message: #3498db;
+}
+.dark {
+  .column_text{
+    color:white !important;
+  }
+  li {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+  .iconfont {
+    font-family: 'iconfont' !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    margin: 5px;
+    place-items: center;
+  }
+
+  .icon-error:before {
+    content: '\e66f';
+    color: var(--error_message);
+  }
+
+  .icon-prompt:before {
+    content: '\e67b';
+    color: var(--info_message);
+  }
+
+  .icon-success:before {
+    content: '\e67f';
+    color: var(--success_message);
+  }
+
+  .icon-warning:before {
+    content: '\e682';
+    color: var(--warning_message);
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .toast_electrolux span {
+    color: var(--darkMessage);
+  }
+
+  @keyframes show_toast {
+    0% {
+      transform: translateX(100%);
+    }
+
+    40% {
+      transform: translateX(-5%);
+    }
+
+    80% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  .toast_electrolux .column i {
+    font-size: 1.75rem;
+  }
+
+  .toast_electrolux.hide {
+    /* backwards是保持第一帧的状态 */
+    /* forwards当动画完成后，保持最后一帧的状态（也就是最后一个关键帧中定义的状态） */
+    animation: hide_toast 0.3s forwards;
+  }
+
+  @keyframes hide_toast {
+    0% {
+      transform: translateX(-10%);
+    }
+
+    40% {
+      transform: translateX(0%);
+    }
+
+    80% {
+      transform: translateX(-5%);
+    }
+
+    100% {
+      transform: translateX(calc(100% + 20px));
+    }
+  }
+
+  .toast_electrolux i:last-child {
+    color: #aeb0d7;
+    cursor: pointer;
+  }
+
+  .toast_electrolux.error .column i {
+    color: var(--errorMessage);
+  }
+
+  .toast_electrolux.warning .column i {
+    color: var(--warningMessage);
+  }
+
+  .toast_electrolux.info .column i {
+    color: var(--infoMessage);
+  }
+
+  .ev-button .btn_electrolux {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: 530px) {
+    .ev-button .btn_electrolux {
+      margin: 0 1px;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .notifications_electrolux {
+    width: 95%;
+    z-index: 99999;
+  }
+}
+.notifications_electrolux .toast_electrolux {
+  width: 100%;
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+.notifications_electrolux {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  z-index: 99999;
+}
+
+.notifications_electrolux .toast_electrolux {
+  width: 400px;
+  list-style: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 16px 17px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  animation: show_toast 0.3s forwards;
+  // box-shadow: rgba(0, 0, 0, 0.1) 2px 4px 20px, rgba(0, 0, 0, 0.1) 4px 2px 20px;
+}
+
+.notifications_electrolux :where(.toast_electrolux, .column) {
+  display: flex;
+  align-items: center;
+}

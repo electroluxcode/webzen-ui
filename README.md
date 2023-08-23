@@ -54,20 +54,21 @@ npm install webzen-ui
 
 
 
+- step1：根目录的src/components 文件中。新建你的组件文件夹,用icon做一个示例
+
+结构如下
+-wz-icon
+--index.ts
+--index.less
+--index.html
+--assets
+
+
+- step2：如果你的组件编写完 运行 sh build.sh 进行 编译 .这个脚本会对 ts和 less进行编译
+
 
 ```shell
-# 由于web component 的 一系列 不可控因素。因此 我们每一个 组件都必须 经过三个流程
-
-# step1：根目录的src/components 文件中。新建你的组件文件夹,用icon做一个示例
-结构如下
-wz-icon
-	index.ts
-	index.css
-	index.html 引入 进行测试
-# step2：component 中新开终端
-npm install 
-如果你的组件编写完 运行 sh build.sh 进行 编译
-index.ts 变成 index.js
+# 由于web component 的 一系列 不可控因素。因此 我们每一个 组件都必须 经过以下个流程
 
 
 # step3：最终传入 core/.ts 进行引用

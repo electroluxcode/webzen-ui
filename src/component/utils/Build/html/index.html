@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+    <title>Document</title>
+</head>
+<style>
+    *{
+        text-decoration: none;
+        
+    }
+    body{
+        background-color: #ebecf0;
+        display: flex;
+        /* flex-direction: column; */
+        width: 100%;
+        overflow-x: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    div{
+        margin: 30px;
+        width: 250px;
+        height: 100px;
+        background: linear-gradient(145deg, #caced5, #f0f5fe);
+box-shadow: 6px 6px 12px #bec3c9, -6px -6px 12px #fff;
+        text-align: center;
+        align-items: center;
+        line-height: 100px;
+    }
+</style>
+<body>
+  <image src="./OIP-A.jpg"/>
+  	<image src="/images/OIP-C.jpg"/>
+    <div><a href="./project and frame/设计稿代码/index.html">11设计稿代码</a></div>
+    <div> <a href="./卡片/index.html">卡22片</a></div>
+    <!-- <div><a href="./3/index.html">3</a></div> -->
+    <div><a href="./project and frame/登陆/index.html">登陆</a></div>
+    <div> <a href="./404样式/index.html">404样式</a></div>
+    <div> <a href="./底边栏/index.html">底边栏</a></div>
+    <div> <a href="./project and frame/webrtc/index.html">webrtc</a></div>
+    
+    <div>等等等等..以后持续更新</div>
+ 
+    <script>
+
+
+async function ajax(options) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const method = options.method.toUpperCase();
+        xhr.onreadystatechange = () => {
+            // xhr.readyState == 4 请求已完成，且响应已就绪
+            if (xhr.readyState !== 4 || xhr.status === 0)
+                return;
+            const responseData = JSON.parse(xhr.response);
+            // 当 readyState 等于 4 且status为 200 时，表示响应已就绪：
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(responseData);
+            }
+            else {
+                reject(`request failed with status code ${xhr.status}`);
+            }
+        };
+        if (method === 'GET') {
+            let str = "?";
+            let param = options.data;
+            for (let i in param) {
+                str += (str == "?") ? `${i}=${param[i]}` : `&${i}=${param[i]}`;
+            }
+            xhr.open(method, options.url + str, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.setRequestHeader('Cache-Control', 'max-age=100');
+            xhr.send(options.data);
+        }
+        if (method === 'POST') {
+            xhr.open(method, options.url, true);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.send(JSON.stringify(options.data));
+        }
+    });
+}
+let option = {
+    method: "GET",
+    url: "/api/GET",
+    data: {
+        id: "d2ddd"
+    }
+};
+ajax(option).then((e) => {
+    console.log(e);
+document.querySelector("img").src=e.data
+document.querySelector("img").setAttribute("test",Math.random())
+});
+	</script>
+
+  
+</body>
+</html>

@@ -1,0 +1,11 @@
+# version: "3"
+# services:
+#  nginx:
+#   image: nginx:latest
+#   ports:
+#   - 80:80 # 本地端口 : 容器端口
+#   volumes:
+#    - /root/nginx/html:/usr/share/nginx/html
+#    - /root/nginx/nginx.conf:/etc/nginx/nginx.conf 
+#   privileged: true
+

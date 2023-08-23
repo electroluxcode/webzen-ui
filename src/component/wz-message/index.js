@@ -1,64 +1,56 @@
 import Base from '../wz-base.js';
-// let baseStyle = document.createElement('link')
-// baseStyle.setAttribute("rel", "stylesheet")
-// baseStyle.setAttribute("href", "https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css")
-// baseStyle.setAttribute("type", "text/css")
-// document.head.appendChild(baseStyle)
-let iconStyle = document.createElement('script');
-iconStyle.setAttribute('src', 'https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-icon/index.js');
-iconStyle.setAttribute('type', 'module');
-document.body.appendChild(iconStyle);
+// @ts-ignore
+import styleslight from "./assets/light.css?inline" assert { type: "css" };
+// @ts-ignore
+import stylesdark from "./assets/dark.css?inline" assert { type: "css" };
+console.log("stylesdark:", stylesdark);
+function chechIcon() {
+    let label = document.querySelector("[id='electrolux_message']");
+    if (!label) {
+        let fontStyle = document.createElement('link');
+        fontStyle.setAttribute('rel', 'stylesheet');
+        fontStyle.setAttribute('id', 'electrolux_message');
+        fontStyle.setAttribute('href', 'https://cdn.jsdelivr.net/npm/webzen-ui/wz-message/assets/icon.css');
+        fontStyle.setAttribute('type', 'text/css');
+        document.body.appendChild(fontStyle);
+    }
+}
+chechIcon();
 let toastDetails = {
     timer: 2000,
     success: {
-        icon: 'solid/circle-check',
+        icon: 'icon-success icon iconfont ',
         color: "#0abf30"
     },
     error: {
-        icon: 'solid/circle-xmark',
+        icon: 'icon-error icon iconfont ',
         color: "#e24d4c"
     },
     warning: {
-        icon: 'solid/circle-exclamation',
+        icon: 'icon-warning icon iconfont ',
         color: "#e9bd0c"
     },
     info: {
-        icon: 'solid/circle-info',
+        icon: 'icon-prompt icon iconfont ',
         color: "#3498db"
     },
     mode: 'dark',
 };
-function modeCssInit(config, appendDom) {
-    if (config.mode == 'dark') {
-        let fontStyle = document.createElement('link');
-        fontStyle.setAttribute('rel', 'stylesheet');
-        fontStyle.setAttribute('href', 'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageDark.css');
-        fontStyle.setAttribute('id', 'electrolux_message');
-        fontStyle.setAttribute('type', 'text/css');
-        appendDom.appendChild(fontStyle);
-    }
-    if (config.mode == 'light') {
-        let fontStyle = document.createElement('link');
-        fontStyle.setAttribute('rel', 'stylesheet');
-        fontStyle.setAttribute('id', 'electrolux_message');
-        fontStyle.setAttribute('href', 'https://cdn.jsdelivr.net/npm/frontmessageplugin@1.0.15/messageLight.css');
-        fontStyle.setAttribute('type', 'text/css');
-        appendDom.appendChild(fontStyle);
-    }
-}
 function modeHtmlInit(config, that, toastDetails) {
     const icon = toastDetails[config.id]?.icon ?? '';
     const color = toastDetails[config.id]?.color ?? '';
     const toast_electrolux = document.createElement('li'); // 创建li元素
-    toast_electrolux.setAttribute("style", `background: white;color: black;`);
     toast_electrolux.className = `toast_electrolux ${config.id}`; // 为li元素新增样式
-    toast_electrolux.innerHTML = `<div class="column" >
-                <wz-icon name="${icon}" color="${color}"></wz-icon>
-                <span>${config.text}</span>
-                </div>
-            `;
+    toast_electrolux.innerHTML = `
+  <div class="column" >
+        <span class="${icon}"></span>
+        <span class="column_text">${config.text}</span>
+  </div>
+`;
     // @ts-ignore
     that._notifications.appendChild(toast_electrolux); // 添加元素到 notifications ul
+    that.adoptedStyle(stylesdark);
+    that.adoptedStyle(styleslight);
     // 2秒后 隐藏toast
     setTimeout(() => that.removeToast(toast_electrolux), config.timer);
 }
@@ -66,21 +58,16 @@ class Message extends Base {
     // step1 :定义 属性 和 监听的属性
     static createToast;
     static removeToast;
-    shadowRootInit;
     _notifications;
     static get observedAttributes() {
         return ['type'];
     }
     constructor(e) {
         super();
-        let list = JSON.parse(JSON.stringify({ mode: "dark" }));
-        const shadowRoot = this.attachShadow({ mode: "open" });
-        this.shadowRootInit = shadowRoot;
         let notifications = document.createElement('ul');
         notifications.setAttribute('class', 'notifications_electrolux');
         this._notifications = notifications;
         this.shadowRootInit.appendChild(notifications);
-        modeCssInit(list, this.shadowRootInit);
     }
     removeToast = (toast_electrolux) => {
         toast_electrolux.classList.add('hide');
@@ -96,4 +83,3 @@ class Message extends Base {
     };
 }
 customElements.define("wz-message", Message);
-// export default Message;

@@ -47,7 +47,7 @@ function dataJsSwitch(mode, that) {
       position: relative;
       color: rgb(13, 108, 252);
       border-bottom: 0px;
-      background: rgb(255, 255, 255);
+      
     `;
     }
     // 初始化下划线
@@ -108,7 +108,6 @@ function dataJsSwitch(mode, that) {
           position: relative;
           color: rgb(13, 108, 252);
           border-bottom: 0px;
-          background: rgb(255, 255, 255);
         `;
             }
             let target_index = e.target.getAttribute("tab_item_key");
@@ -172,7 +171,6 @@ function dataCssSwitch(tabs_params, that) {
     }
 }
 class myDiv extends Base {
-    shadowRootInit;
     close;
     Config;
     /**
@@ -185,9 +183,6 @@ class myDiv extends Base {
         super();
         // 是否 展开
         this.close = false;
-        const shadowRoot = this.attachShadow({ mode: "open" });
-        // this.adoptedStyle(styles);
-        this.shadowRootInit = shadowRoot;
     }
     /**
      * @des step1:初始化数据

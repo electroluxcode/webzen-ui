@@ -7,7 +7,6 @@ class myDiv extends Base {
     #mask_player_title_text;
     #mask_player;
     #mask_player_container;
-    shadowRootInit;
     // 监听
     static get observedAttributes() {
         return ["title", "background", "color"];
@@ -15,10 +14,8 @@ class myDiv extends Base {
     constructor() {
         super();
         // 这样我们才能够去追加元素
-        const shadowRoot = this.attachShadow({ mode: "open" });
         // shadowRoot.adoptedStyleSheets = [styles];
         this.adoptedStyle(styles);
-        this.shadowRootInit = shadowRoot;
     }
     // 重要：生命周期方法 开始
     connectedCallback() {

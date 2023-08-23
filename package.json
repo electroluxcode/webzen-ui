@@ -4,6 +4,7 @@
   "description": "基于web-component的UI框架,支持全量引入和按需引入(开发中)",
   "source": "src/index.ts",
   "types": "src/types/index.d.ts",
+  "private":"true",
   "scripts": {
     "build": "node ./config/webpack.build.js",
     "prepare": "husky install ",

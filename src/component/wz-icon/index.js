@@ -9,10 +9,9 @@ class Icon extends Base {
     }
     constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
         this.adoptedStyle(style);
-        shadowRoot.innerHTML = `<i id="icon" part="icon" class="icon" role="img"></i>`;
-        this.#icon = shadowRoot.getElementById('icon');
+        this.shadowRootInit.innerHTML = `<i id="icon" part="icon" class="icon" role="img"></i>`;
+        this.#icon = this.shadowRootInit.getElementById('icon');
     }
     get name() {
         return this.getAttribute('name');

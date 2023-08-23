@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限测试</title>
+</head>
+
+<body>
+    <button vif="list/button/add">
+        增加
+    </button>
+    <button vif="list/button/delete">
+        减少权限
+    </button>
+    <button vif="list/button/other">
+        其他权限
+    </button>
+
+    <script src="control.js">
+    </script>
+
+
+    <script>
+
+var permute = function(nums) {
+    let length = nums.length
+    if(nums.length==1){
+        return [nums]
+    }    
+    function dfs(res,path,data){
+        if(path.length==length){
+            res.push(JSON.parse(JSON.stringify(path)))
+            return
+        }
+        for(let i of data){
+            
+            if(!path.includes(i)){
+                // console.log(i)
+                path.push(i);
+                dfs(res,path,nums);
+                path.pop()
+            }
+        }
+    }
+    let res= []
+    let path = []
+    dfs(res,path,nums)
+    return res
+};
+        // var obj =
+
+        // {
+        //     "path": "/design",
+        //     "name": "Design",
+        //     "redirect": "/design/data",
+        //     "meta": {
+        //         "icon": "noto-v1:direct-hit",
+        //         "title": "routes.main.design.self",
+        //         "orderNo": 1,
+        //     },
+        //     "children": [
+        //         {
+        //             "path": "data",
+        //             "name": "DesignData",
+        //             "meta": {
+        //                 "title": "routes.main.design.data",
+        //                 "icon": "material-symbols:folder-copy-rounded",
+        //                 "hideMenu": false,
+        //             }
+        //         },  {
+        //             "path": "data",
+        //             "name": "DesignNo",
+        //             "meta": {
+        //                 "title": "routes.main.design.data",
+        //                 "icon": "material-symbols:folder-copy-rounded",
+        //                 "hideMenu": false,
+        //             }
+        //         },
+        //     ]
+        // };
+        // let test = {
+        //     DesignData: 1,
+        //     Design: 1
+        // }
+        // 我现在的数据结构是这样,我想让你根据 test 数据里面的参数 对 obj 里面的name 包含这些 obj的key的obj进行删除
+        // 例如上面就应该输出
+        // {
+        //     "path": "/design",
+        //     "name": "Design",
+        //     "redirect": "/design/data",
+        //     "meta": {
+        //         "icon": "noto-v1:direct-hit",
+        //         "title": "routes.main.design.self",
+        //         "orderNo": 1,
+        //     },
+        //     "children": [
+        //         {
+        //             "path": "data",
+        //             "name": "DesignData",
+        //             "meta": {
+        //                 "title": "routes.main.design.data",
+        //                 "icon": "material-symbols:folder-copy-rounded",
+        //                 "hideMenu": false,
+        //             }
+        //         }, 
+        //     ]
+        // };
+
+
+
+        deleteObjectWithTestValue(obj,"name",)
+    </script>
+</body>
+
+</html>

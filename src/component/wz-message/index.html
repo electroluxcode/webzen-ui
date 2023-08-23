@@ -6,8 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-icon/index.js"></script>
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/webzen-ui/src/component/wz-icon/index.js"></script> -->
     <style>
+    
+
+
+body{
+    background: black;
+}
+
 
     </style>
 </head>
@@ -15,8 +22,8 @@
 <body>
     <script src="index.js" type="module"></script>
     <wz-message ></wz-message>
-
-
+    <wz-message ></wz-message>
+    
     <button>点我</button>
     <script type="module">
 
@@ -28,9 +35,12 @@
         // tst.createToast("info","你1好",3000)
         document.querySelector("button").addEventListener("click",()=>{
             document.querySelector("wz-message").createToast("info", "你1好", 1000, )
+            document.querySelector("wz-message").createToast("success", "你1好", 1000, )
+            // webzenModeFn("mode",{mode:"night"},webzen)
         })
 
-
+        localStorage.setItem("webzen_theme",JSON.stringify({ mode: "dark" }))
+        // localStorage.setItem("webzen_theme",JSON.stringify({ mode: "light" }))
 
     </script>
 

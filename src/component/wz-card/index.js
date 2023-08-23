@@ -1,74 +1,47 @@
 import Base from "../wz-base.js";
 // @ts-ignore
-import styles from "./index.css?inline" assert { type: "css" };
+import styleslight from "./assets/light_white.css?inline" assert { type: "css" };
 // @ts-ignore
-import stylesnight from "./night.css?inline" assert { type: "css" };
-console.log("styles:", styles);
+import stylesnight from "./assets/dark_green_half.css?inline" assert { type: "css" };
 function switchJson(input) {
     let init = input;
     init = (Function("return " + init))();
     return init;
 }
-function dataCssSwitch(headerConfig, bodyConfig, that) {
-    if (!bodyConfig || !headerConfig) {
-        that.shadowRootInit.querySelector(".card_header_wrapper").style.borderBottom = "unset";
-        that.shadowRootInit.querySelector(".card").style.border = "unset";
-        that.shadowRootInit.querySelector(".card_header_wrapper_before").style.width = "30%";
-        console.log("参数传递有漏");
-        return;
+function dataCssSwitch(config, that) {
+    if (!config) {
+        that.adoptedStyle(styleslight);
     }
-    // 内容-颜色
-    if (bodyConfig.cardBodyColor) {
-        that.style.setProperty("--card_body_color", bodyConfig.cardBodyColor);
+    if (config.mode == "light_white") {
+        that.adoptedStyle(styleslight);
     }
-    else {
-        that.style.setProperty("--card_body_color", "transparent");
-    }
-    // 头部-颜色
-    if (headerConfig.cardTitleTargetColor) {
-        that.style.setProperty("--card_title_target_color", headerConfig.cardTitleTargetColor);
-        that.style.setProperty("--card_title_color", headerConfig.cardTitleColor);
-        that.shadowRootInit.querySelector(".card_header_wrapper_before").style.width = "30%";
-        that.shadowRootInit.querySelector(".card_header_wrapper").style.borderBottom = "unset";
-        that.shadowRootInit.querySelector(".card").style.border = "unset";
-    }
-    else {
-        that.shadowRootInit.querySelector(".card_header_wrapper_before").style.width = "100%";
-        that.shadowRootInit.querySelector(".card_header_wrapper_before").style.background = headerConfig.cardTitleColor;
-    }
-    // 字体颜色
-    if (headerConfig.fontColor) {
-        that.shadowRootInit.querySelector(".card").style.color = headerConfig.fontColor;
+    if (config.mode == "dark_green_half") {
+        that.adoptedStyle(stylesnight);
     }
 }
 class myDiv extends Base {
     close;
-    headerConfig;
-    bodyConfig;
+    config;
     /**
      * @des 初始化监听数据
      */
     static get observedAttributes() {
-        return ["header-config", "body-config"];
+        return ["config"];
     }
     constructor() {
         super();
         // 是否 展开
         this.close = false;
-        this.adoptedStyle(styles);
-        this.adoptedStyle(stylesnight);
     }
     /**
      * @des 初始化数据
      */
     connectedCallback() {
         this.render({});
-        this.headerConfig = switchJson(this.getAttribute("header-config"));
-        this.bodyConfig = switchJson(this.getAttribute("body-config"));
-        // console.log("this.headerConfig,this.bodyConfig:",this.headerConfig,this.bodyConfig)
+        this.config = switchJson(this.getAttribute("config"));
         // 重要4:能力增强
         this.closeRender();
-        dataCssSwitch(this.headerConfig, this.bodyConfig, this);
+        dataCssSwitch(this.config, this);
     }
     // 重要4:能力增强
     closeRender() {
@@ -82,17 +55,11 @@ class myDiv extends Base {
     attributeChangedCallback(attr, oldValue, newValue) {
         newValue = switchJson(newValue);
         if (oldValue) {
-            // console.log("sss", newValue)
             switch (attr) {
                 case "header-config":
                     break;
-                case "body-config":
-                    // this.#mask_player.style.background =
-                    //   newValue;
-                    break;
             }
         }
-        // console.log("arrributeChangeCallback", attr, oldValue, newValue);
     }
     /**
      * @des dom节点的渲染
@@ -106,7 +73,7 @@ class myDiv extends Base {
     <div class="card" >
         <div class="card_mask"></div>
   
-        <div class="card_header_wrapper">
+        <div class="card_header_wrapper" part="card_header">
             <div class="card_header_wrapper_before"> </div>
             <div class="card_header_gradient ">
                 <div class="card_header_left">
@@ -117,7 +84,7 @@ class myDiv extends Base {
                 </div>
             </div>
         </div>
-        <div class="card_body ">
+        <div class="card_body " part="card_body">
           <slot name="card_container"></slot>
         </div>
     </div>
@@ -134,10 +101,8 @@ class myDiv extends Base {
     switchActive() {
         if (this.close) {
             this.shadowRootInit.querySelector(".card").style.height = "100%";
-            // this.shadowRootInit.querySelector(".card_mask").style.height = "100%"
         }
         else {
-            // this.shadowRootInit.querySelector(".card_mask").style.height = "var(--card_title_height)"
             this.shadowRootInit.querySelector(".card").style.height = "var(--card_title_height)";
         }
         this.close = !this.close;

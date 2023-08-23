@@ -8,7 +8,6 @@ function switchJson(input) {
 }
 class myDiv extends Base {
     #mask;
-    shadowRootInit;
     /**
      * @des 重要1：小写才能被监听到 - 是为了方便辨认 - 异步改变值的之后能够被监听到
      * @des 生命周期方法 重新渲染 .甚至还是第一次进行渲染，比connect还快
@@ -54,10 +53,8 @@ class myDiv extends Base {
     constructor() {
         super();
         // 这样我们才能够去追加元素
-        const shadowRoot = this.attachShadow({ mode: "open" });
         // shadowRoot.adoptedStyleSheets = [styles];
         this.adoptedStyle(styles);
-        this.shadowRootInit = shadowRoot;
     }
     /**
      * @des 能力增强 和 初始化数据

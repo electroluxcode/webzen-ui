@@ -11,15 +11,14 @@ class button extends Base {
     }
     constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: "open" });
         this.adoptedStyle(style);
-        shadowRoot.innerHTML = `<button
+        this.shadowRootInit.innerHTML = `<button
             class="button" part="button" id="button"
           >
           <slot></slot>
           </button>
           `;
-        this.#btnEl = shadowRoot.getElementById("button");
+        this.#btnEl = this.shadowRootInit.getElementById("button");
     }
     focus() {
         this.#btnEl.focus();

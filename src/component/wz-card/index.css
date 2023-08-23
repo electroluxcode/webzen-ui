@@ -26,6 +26,8 @@
    font-size:12px
 }
 
+
+
 /* 分割线 */
 .card_header {
     position: relative;
@@ -84,4 +86,6 @@
     border-radius: 5px 5px 0px 0px;
 }
 
-
+.card_body{
+    height:100%
+}
