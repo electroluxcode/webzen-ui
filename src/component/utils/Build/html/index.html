@@ -41,11 +41,8 @@ box-shadow: 6px 6px 12px #bec3c9, -6px -6px 12px #fff;
     <div><a href="./project and frame/设计稿代码/index.html">11设计稿代码</a></div>
     <div> <a href="./卡片/index.html">卡22片</a></div>
     <!-- <div><a href="./3/index.html">3</a></div> -->
-    <div><a href="./project and frame/登陆/index.html">登陆</a></div>
-    <div> <a href="./404样式/index.html">404样式</a></div>
-    <div> <a href="./底边栏/index.html">底边栏</a></div>
-    <div> <a href="./project and frame/webrtc/index.html">webrtc</a></div>
-    
+
+   
     <div>等等等等..以后持续更新</div>
  
     <script>
@@ -76,7 +73,7 @@ async function ajax(options) {
             }
             xhr.open(method, options.url + str, true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.setRequestHeader('Cache-Control', 'max-age=100');
+	        xhr.setRequestHeader('Cache-Control', 'no-store');
             xhr.send(options.data);
         }
         if (method === 'POST') {
@@ -95,8 +92,43 @@ let option = {
 };
 ajax(option).then((e) => {
     console.log(e);
-document.querySelector("img").src=e.data
-document.querySelector("img").setAttribute("test",Math.random())
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
+});
+ajax(option).then((e) => {
+    console.log(e);
+
 });
 	</script>
 

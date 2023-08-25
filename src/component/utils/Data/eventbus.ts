@@ -45,9 +45,6 @@ class eventBus {
         }
     }
     add = (name:string, event:Function) => {
-        if(!this.eventBus[name]){
-            this.eventBus[name] = []
-        }
         if(this.eventBus[name].length){
             this.eventBus[name].push(event)
         }else{

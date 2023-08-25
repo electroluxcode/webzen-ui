@@ -1,28 +1,29 @@
+"use strict";
 let debounce = (fn, timer) => {
-    window.flag;
+    let flag;
     return function (args) {
-        if (window.flag) {
-            clearTimeout(window.flag);
+        if (flag) {
+            clearTimeout(flag);
         }
-        window.flag = setTimeout(() => {
+        flag = setTimeout(() => {
             fn(args);
         }, timer);
     };
 };
-window.throleFlag = true;
-let throle = (fn, timer) => {
-    window.throleFlag;
-    return function () {
-        if (window.throleFlag == true) {
-            fn();
-            window.throleFlag = false;
-        }
-        setTimeout(() => {
-            window.throleFlag = true;
-        }, timer);
-    };
-};
-export { debounce, throle };
+// let throle =(fn:Function,timer:number)=>{
+//     let flag = true;
+//     let fn
+//     return function(){
+//         if(time == true){
+//             fn();
+//             clearTimeout(fn)
+//             time =false
+//         }
+//         fn = setTimeout(() => {
+//             flag = false
+//         }, timer);
+//     }
+// }
 // let hello1 = (param:any)=>{
 //     console.log(param)
 // }

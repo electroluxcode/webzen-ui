@@ -1,15 +1,15 @@
 :host {
   /* 头部最终颜色 */
-  --card_header_color: linear-gradient(90deg, rgba(44, 123, 76, 0.81) 0%, rgba(44, 123, 76, 0) 100%);
+  --card_header_color: linear-gradient(90deg, var(--webzen-theme-color, rgba(44, 123, 76, 0.81)) 0%, rgba(44, 123, 76, 0) 100%);
   /* 头部高度 */
   --card_title_height: 36px;
   /* 身体实体颜色 */
-  --card_header_wrapper_divide: unset;
+  --card_header_wrapper_divide: linear-gradient(270deg, rgba(217, 217, 217, 0) 0%, #00ffe4 50%, rgba(217, 217, 217, 0) 100%);
   /* 身体实体颜色 */
   --card_body_color: rgba(0, 0, 0, 0.3);
   --card_font_color: #f0f0f0;
 }
-.card {
+.dark.card {
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
   color: var(--card_font_color);
   position: relative;
@@ -21,15 +21,18 @@
   overflow: hidden;
   font-size: 12px;
 }
-/* 分割线 */
-.card_header {
+.dark {
+  /* 分割线 */
+  /* 头部颜色 */
+}
+.dark .card_header {
   position: relative;
   display: flex;
   justify-content: space-between;
   background: black;
   /* z-index: 999; */
 }
-.card_header_gradient {
+.dark .card_header_gradient {
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -38,23 +41,23 @@
   height: var(--card_title_height);
   padding: 0px 10px;
 }
-/* 头部颜色 */
-.card_header_wrapper {
+.dark .card_header_wrapper {
   border-bottom: var(--card_header_wrapper_divide);
   position: relative;
   font-size: 13px;
 }
-.card_header_wrapper_before {
-  width: 30%;
+.dark .card_header_wrapper_before {
+  width: 60%;
   background: var(--card_header_color);
-  content: "";
+  content: '';
+  border-bottom: var(--card_header_wrapper_divide);
   position: absolute;
   height: var(--card_title_height);
   backdrop-filter: blur(2px);
   border-radius: 5px 5px 0px 0px;
   align-items: center;
 }
-.card_mask {
+.dark .card_mask {
   /* transition: all .3s ease-in-out; */
   background: var(--card_body_color);
   border-radius: 10px;
@@ -66,10 +69,10 @@
   transition: all 0.3s ease-in-out;
   overflow: hidden;
 }
-.padding {
+.dark .padding {
   padding: 2px 10px;
   border-radius: 5px 5px 0px 0px;
 }
-.card_body {
+.dark .card_body {
   height: 100%;
 }

@@ -8,7 +8,7 @@ docker_image_version=${1:-1.1} # Docker镜像版本
 docker_image_name=${2:-bimddp_image} # Docker 仓库 image 名字
 docker_hub_username=${3:-electroluxcode} # Docker Hub 用户名
 container_name=${4:-bimddp_container} # 容器名字
-container_expose_port=${5:-81} # 容器暴露的端口
+container_expose_port=${5:-82} # 容器暴露的端口
 
 server_username=${6:-root} # Linux服务器用户名
 server_address=${7:-192.168.80.133} # Linux服务器地址

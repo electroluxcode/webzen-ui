@@ -2,22 +2,11 @@ import Base from "../wz-base.js";
 // @ts-ignore
 import styleslight from "./assets/light_white.css?inline" assert { type: "css" };
 // @ts-ignore
-import stylesnight from "./assets/dark_green_half.css?inline" assert { type: "css" };
+import stylesdark from "./assets/dark_green_half.css?inline" assert { type: "css" };
 function switchJson(input) {
     let init = input;
     init = (Function("return " + init))();
     return init;
-}
-function dataCssSwitch(config, that) {
-    if (!config) {
-        that.adoptedStyle(styleslight);
-    }
-    if (config.mode == "light_white") {
-        that.adoptedStyle(styleslight);
-    }
-    if (config.mode == "dark_green_half") {
-        that.adoptedStyle(stylesnight);
-    }
 }
 class myDiv extends Base {
     close;
@@ -41,7 +30,8 @@ class myDiv extends Base {
         this.config = switchJson(this.getAttribute("config"));
         // 重要4:能力增强
         this.closeRender();
-        dataCssSwitch(this.config, this);
+        this.adoptedStyle(styleslight);
+        this.adoptedStyle(stylesdark);
     }
     // 重要4:能力增强
     closeRender() {

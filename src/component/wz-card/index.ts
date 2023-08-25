@@ -3,7 +3,7 @@ import Base from "../wz-base.js";
 // @ts-ignore
 import styleslight from "./assets/light_white.css?inline" assert { type: "css" };
 // @ts-ignore
-import stylesnight from "./assets/dark_green_half.css?inline" assert { type: "css" };
+import stylesdark from "./assets/dark_green_half.css?inline" assert { type: "css" };
 
 function switchJson(input: string): any {
   let init = input
@@ -12,21 +12,11 @@ function switchJson(input: string): any {
   return init
 }
 interface config {
-  mode:"dark_green_half" | "light_white"
+  mode:"dark" | "light"
 }
 
 
-function dataCssSwitch(config:config,that:any){
-  if(!config){
-    that.adoptedStyle(styleslight);
-  }
-  if(config.mode=="light_white"){
-    that.adoptedStyle(styleslight);
-  }
-  if(config.mode=="dark_green_half"){
-    that.adoptedStyle(stylesnight);
-  }
-}
+
 
 class myDiv extends Base {
   close: boolean;
@@ -53,7 +43,8 @@ class myDiv extends Base {
     
     // 重要4:能力增强
     this.closeRender();
-    dataCssSwitch(this.config,this)
+    this.adoptedStyle(styleslight)
+    this.adoptedStyle(stylesdark)
   }
   // 重要4:能力增强
   closeRender() {

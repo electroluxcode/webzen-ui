@@ -1,10 +1,10 @@
 {
 	"name": "webzen-ui",
-	"version": "0.2.0",
+	"version": "0.2.5",
 	"description": "",
 	"main": "wz-base.js",
 	"scripts": {
-		"deploy": "ts-node update && npm publish  "
+		"deploy": " ts-node update && npm publish  "
 	},
 	"types": "module",
 	"keywords": [],

@@ -1,38 +1,31 @@
-declare global {
-    interface Window {
-        flag: any;
-        throleFlag:boolean
-    }
-  }
 let debounce=(fn:Function,timer:number)=>{
-    window.flag;
+    let flag:any;
     return function(args:any){
-        if(window.flag){
-            clearTimeout(window.flag);
+        if(flag){
+            clearTimeout(flag);
         }
-        window.flag = setTimeout(() => {
-
+        flag = setTimeout(() => {
             fn(args);
         }, timer);
     }
 
 }
-window.throleFlag = true
-let throle =(fn:Function,timer:number)=>{
-    window.throleFlag ;
 
-    return function(){
-        if(window.throleFlag == true){
-            fn();
-            window.throleFlag =false
-        }
-        setTimeout(() => {
-            window.throleFlag = true
-        }, timer);
-    }
+// let throle =(fn:Function,timer:number)=>{
+//     let flag = true;
+//     let fn
+//     return function(){
+//         if(time == true){
+//             fn();
+//             clearTimeout(fn)
+//             time =false
+//         }
+//         fn = setTimeout(() => {
+//             flag = false
+//         }, timer);
+//     }
 
-}
-export {debounce,throle}
+// }
 // let hello1 = (param:any)=>{
 //     console.log(param)
 // }

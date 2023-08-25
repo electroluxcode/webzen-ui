@@ -64,7 +64,7 @@ npm install webzen-ui
 --assets
 
 
-- step2：如果你的组件编写完 运行 sh build.sh 进行 编译 .这个脚本会对 ts和 less进行编译
+- step2：如果你的组件编写完 运行 sh build.sh 进行 编译 .这个脚本会对 ts和 less进行编译(暂时不做这一块)
 
 
 ```shell
@@ -131,3 +131,48 @@ caiIpt.addEventListener('change', function(e) {
 ​          
 
 ​      
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Knowledge
+
+
+
+### 1. webcomponent | 深浅色模式
+
+一般我们说的深色浅色模式，有以下几种方案
+
+- 例如vitepress 他是在头部添加class为night的变量,然后通过优先级控制的方法进行控制
+- 例如antd 他是在 body 添加一个属性是data-theme 的字段
+- 利用浏览器自身的方案：例如是prefer-color-theme 或者
+
+我这里沿用 vitepress的 方案，但是区别是在头部加会因为shadow dom 的原因，而不能进行穿透。
+
+我采用的方案如下
+
+- 利用 发布者/订阅者模式，在我的基类元素初始化的时候给基类的头部添加元素就可以了，并且引入 dark/light的 样式文件
+
+遇到的问题是 webcomponent是 异步的 ，因此需要引入声明周期的概念,
+
+
+
+
+
+
+
+
+
+
+
+
+
