@@ -26,7 +26,10 @@
    font-size:12px
 }
 
-
+.card_header_border{
+    background:var(--card_header_wrapper_divide) !important;
+    height:1px !important
+}
 
 /* 分割线 */
 .card_header {

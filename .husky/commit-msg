@@ -37,7 +37,7 @@ feat:类型是feat表示在代码库中新增了一个功能 git commit -m "feat
 def check_commit_line1_format(msg):
     print(msg)
     # regOther = r'\S{5,} (.){10,100}' ^fix:|^feat: ((修复了)|(增加了))(.){2,100}功能
-    regOther = r'^fix:|^feat:|^docs:|^style:|^refactor:|^test:|^chore:|^build:|^ci:|^update:|^test:|^improve:|^perf:|^revert: (.){1,100}'
+    regOther = r'^fix|^feat|^docs|^style|^refactor|^test|^chore|^build|^ci|^update|^test|^improve|^perf|^revert (.){1,100}'
     matchObj = re.match(regOther, msg)
     return matchObj
 

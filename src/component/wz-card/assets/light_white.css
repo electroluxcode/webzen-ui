@@ -66,5 +66,5 @@
   border-radius: 5px 5px 0px 0px;
 }
 .card_body {
-  height: 100%;
+  height: calc(100% - var(--card_title_height));
 }

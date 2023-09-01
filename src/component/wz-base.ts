@@ -65,7 +65,7 @@ export default class Base extends HTMLElement {
     } else {
       this.shadowRootInit.children[0].classList.add("dark")
     }
-    console.log("出现吧", eventbus.eventBus, e)
+    // console.log("出现吧", eventbus.eventBus, e)
   }
 
   adoptedStyle(style: CSSStyleSheet) {

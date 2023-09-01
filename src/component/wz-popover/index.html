@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js" type="module"></script>
+    <style>
+        .container{
+            /* background:red; */
+           /* width: 100px; */
+        }
+        body{
+            background: rgb(221, 214, 214);
+        }
+        :host{
+            --pad:5px
+        }
+        #test{
+            width: 100px;
+        }
+        :not(:defined){
+            display: block;
+            opacity: 0;
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="test">2332</div>
+    <h1>2w</h1>
+    
+    <wz-popover dir="top" target="#test">
+        <div class="container">
+            ds
+        </div>
+    </wz-popover>
+</body>
+</html>

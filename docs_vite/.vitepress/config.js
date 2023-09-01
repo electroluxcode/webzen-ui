@@ -45,14 +45,22 @@ export default defineConfig({
             
           ]
         },
+        
         {
-          text: '交互',
+          text: '数据展示',
           items: [
             { text: "tabs", link: "/components/tabs" },
             { text: "card", link: "/components/card" },
+            { text: "iframe", link: "/components/iframe" },
+          ]
+        },
+        {
+          text: '交互',
+          items: [
+            { text: "popover", link: "/components/popover" },
             { text: "message", link: "/components/message" },
             { text: "dialog", link: "/components/dialog" },
-            { text: "iframe", link: "/components/iframe" },
+           
            
           ]
         },

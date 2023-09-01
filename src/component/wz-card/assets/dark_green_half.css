@@ -4,9 +4,10 @@
   /* 头部高度 */
   --card_title_height: 36px;
   /* 身体实体颜色 */
+  --card_body_color: rgba(0, 0, 0, 0.3);
   --card_header_wrapper_divide: linear-gradient(270deg, rgba(217, 217, 217, 0) 0%, #00ffe4 50%, rgba(217, 217, 217, 0) 100%);
   /* 身体实体颜色 */
-  --card_body_color: rgba(0, 0, 0, 0.3);
+  --card_body_color: rgba(0, 0, 0, 0.5);
   --card_font_color: #f0f0f0;
 }
 .dark.card {
@@ -24,6 +25,11 @@
 .dark {
   /* 分割线 */
   /* 头部颜色 */
+}
+.dark .card_header_border {
+  background: var(--card_header_wrapper_divide) !important;
+  width: 30%;
+  height: 2.5px !important;
 }
 .dark .card_header {
   position: relative;
@@ -54,7 +60,7 @@
   position: absolute;
   height: var(--card_title_height);
   backdrop-filter: blur(2px);
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 5px;
   align-items: center;
 }
 .dark .card_mask {
@@ -74,5 +80,5 @@
   border-radius: 5px 5px 0px 0px;
 }
 .dark .card_body {
-  height: 100%;
+  height: calc(100% - var(--card_title_height));
 }

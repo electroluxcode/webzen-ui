@@ -1,87 +1,87 @@
 {
-  "name": "webzen-ui",
-  "version": "0.0.14",
-  "description": "基于web-component的UI框架,支持全量引入和按需引入(开发中)",
-  "source": "src/index.ts",
-  "types": "src/types/index.d.ts",
-  "private":"true",
-  "scripts": {
-    "build": "node ./config/webpack.build.js",
-    "prepare": "husky install ",
-    "test": "jest file/testCase --coverage ",
-    "docs": "docsify serve docs",
-    "docs:dev": "vitepress dev docs_vite",
-    "docs:build": "vitepress build docs_vite",
-    "docs:serve": "vitepress serve docs_vite",
-    "docs:preview": "vitepress preview docs_vite"
-  },
-  "contributes": {
-    "snippets": [
-      {    
-        "path": "./ts.code-snippets"
-      }
-    ]
-  },
-  "homepage": "https://gitee.com/Electrolux/",
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/Electrolux/"
-  },
-  "keywords": [
-    "ts",
-    "util"
-  ],
-  "label": [
-    {
-      "frontName": "Bili",
-      "behindName": "Electrolux",
-      "src": "https://space.bilibili.com/286773126",
-      "color": "red"
-    }
-  ],
-  "author": "electrolux",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.40",
-    "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.19.1",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
-    "babel-loader": "^8.0.0-beta.0",
-    "babel-plugin-lodash": "^3.3.2",
-    "babel-plugin-react-transform": "^3.0.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "chalk": "^4.1.2",
-    "clean-webpack-plugin": "^2.0.0",
-    "commander": "^9.5.0",
-    "css-loader": "^6.7.3",
-    "eslint": "^7.32.0",
-    "husky": "^8.0.3",
-    "inquirer": "^7.3.3",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "jsdoc": "^3.6.10",
-    "ora": "^4.1.1",
-    "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ts-jest": "^29.1.0",
-    "ts-loader": "^8.4.0",
-    "typescript": "^4.8.3",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^5.0.0"
-  },
-  "dependencies": {
-    "@giscus/vue": "^2.2.8",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-runtime": "^6.26.0",
-    "jsonfile": "^6.1.0",
-    "pagefind": "^0.12.0",
-    "path": "^0.12.7",
-    "terser-webpack-plugin": "^4.2.3",
-    "vitepress": "^1.0.0-alpha.75",
-    "vitepress-plugin-pagefind": "^0.2.4"
-  }
+	"name": "webzen-ui",
+	"version": "0.0.15",
+	"description": "基于web-component的UI框架,支持全量引入和按需引入(开发中)",
+	"source": "src/index.ts",
+	"types": "src/types/index.d.ts",
+	"private": "true",
+	"scripts": {
+		"build": "node ./config/webpack.build.js",
+		"prepare": "husky install ",
+		"test": "jest file/testCase --coverage ",
+		"docs": "docsify serve docs",
+		"docs:dev": "vitepress dev docs_vite",
+		"docs:build": "vitepress build docs_vite",
+		"docs:serve": "vitepress serve docs_vite",
+		"docs:preview": "vitepress preview docs_vite"
+	},
+	"contributes": {
+		"snippets": [
+			{
+				"path": "./ts.code-snippets"
+			}
+		]
+	},
+	"homepage": "https://gitee.com/Electrolux/",
+	"repository": {
+		"type": "git",
+		"url": "https://gitee.com/Electrolux/"
+	},
+	"keywords": [
+		"ts",
+		"util"
+	],
+	"label": [
+		{
+			"frontName": "Bili",
+			"behindName": "Electrolux",
+			"src": "https://space.bilibili.com/286773126",
+			"color": "red"
+		}
+	],
+	"author": "electrolux",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/cli": "^7.0.0-beta.40",
+		"@babel/core": "^7.19.1",
+		"@babel/preset-env": "^7.19.1",
+		"@typescript-eslint/eslint-plugin": "^5.32.0",
+		"@typescript-eslint/parser": "^5.32.0",
+		"babel-loader": "^8.0.0-beta.0",
+		"babel-plugin-lodash": "^3.3.2",
+		"babel-plugin-react-transform": "^3.0.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"chalk": "^4.1.2",
+		"clean-webpack-plugin": "^2.0.0",
+		"commander": "^9.5.0",
+		"css-loader": "^6.7.3",
+		"eslint": "^7.32.0",
+		"husky": "^8.0.3",
+		"inquirer": "^7.3.3",
+		"jest": "^29.5.0",
+		"jest-environment-jsdom": "^29.5.0",
+		"jsdoc": "^3.6.10",
+		"ora": "^4.1.1",
+		"prettier": "^2.8.8",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"ts-jest": "^29.1.0",
+		"ts-loader": "^8.4.0",
+		"typescript": "^4.8.3",
+		"webpack": "^5.0.0",
+		"webpack-cli": "^5.0.0"
+	},
+	"dependencies": {
+		"@giscus/vue": "^2.2.8",
+		"babel-loader": "^7.1.5",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-runtime": "^6.26.0",
+		"jsonfile": "^6.1.0",
+		"pagefind": "^0.12.0",
+		"path": "^0.12.7",
+		"terser-webpack-plugin": "^4.2.3",
+		"vitepress": "^1.0.0-alpha.75",
+		"vitepress-plugin-pagefind": "^0.2.4"
+	}
 }

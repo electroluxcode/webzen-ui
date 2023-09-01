@@ -1,4 +1,3 @@
-import eventbus from "./utils/Data/eventbus.js";
 import styles from "./wz-base.css?inline" assert { type: "css" };
 /**
  * @des 定义生命周期
@@ -54,7 +53,7 @@ export default class Base extends HTMLElement {
         else {
             this.shadowRootInit.children[0].classList.add("dark");
         }
-        console.log("出现吧", eventbus.eventBus, e);
+        // console.log("出现吧", eventbus.eventBus, e)
     }
     adoptedStyle(style) {
         let styleSheet = style;

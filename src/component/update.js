@@ -9,7 +9,7 @@ try {
     const packageJson = JSON.parse(packageJsonStr);
     // 升级版本号
     const arr = packageJson.version.split('.');
-    if (arr[2] < 9) {
+    if (arr[2] < 99) {
         arr[2] = +arr[2] + 1;
     }
     else if (arr[1] < 9) {

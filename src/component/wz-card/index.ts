@@ -88,6 +88,9 @@ class myDiv extends Base {
                 </div>
             </div>
         </div>
+        <div class="card_header_border">
+          
+        </div>
         <div class="card_body " part="card_body">
           <slot name="card_container"></slot>
         </div>
