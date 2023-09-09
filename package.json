@@ -82,6 +82,6 @@
 		"path": "^0.12.7",
 		"terser-webpack-plugin": "^4.2.3",
 		"vitepress": "^1.0.0-alpha.75",
-		"vitepress-plugin-pagefind": "^0.2.4"
+		"vitepress-plugin-pagefind": "^0.2.6"
 	}
 }

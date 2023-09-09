@@ -52,6 +52,7 @@ export default defineConfig({
             { text: "tabs", link: "/components/tabs" },
             { text: "card", link: "/components/card" },
             { text: "iframe", link: "/components/iframe" },
+            { text: "tree", link: "/components/tree" },
           ]
         },
         {

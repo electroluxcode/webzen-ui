@@ -260,7 +260,6 @@ popover.setAttribute('dir','right');
     <wz-button type="flat">菜单二</wz-button>
     <wz-button type="flat">菜单三</wz-button>
 </wz-popover>
-<wz-switch onchange="document.getElementById('popover_open').open = this.checked"></wz-switch>
 </div>
 
 ```html

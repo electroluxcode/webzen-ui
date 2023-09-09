@@ -15,7 +15,7 @@ let life_case = new life()
 life_case.register("run",theme)
 
 export default class Base extends HTMLElement {
-  shadowRootInit: any;
+  shadowRootInit: any | HTMLDivElement;
   static urlPrefix = 'https://cdn.jsdelivr.net/npm/webzen-ui-icons'
   // this.slots : Object
   constructor() {
@@ -33,7 +33,7 @@ export default class Base extends HTMLElement {
    * @des 注册全局事件
    */
   async mount() {
-    console.log("开始挂载")
+    // console.log("开始挂载")
     const undefinedElements = document.querySelectorAll(":not(:defined)");
 
     const promises = [...undefinedElements].map((button) => {

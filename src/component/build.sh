@@ -1,6 +1,6 @@
 #!/bin/bash
 find . -type f -iname \*.js -delete
-
+# tsc --project ./ --watch
 echo -e "\e[91m --本地ts-build中--"
 tsc --project ./
 

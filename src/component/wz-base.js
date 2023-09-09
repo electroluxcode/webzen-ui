@@ -24,7 +24,7 @@ export default class Base extends HTMLElement {
      * @des 注册全局事件
      */
     async mount() {
-        console.log("开始挂载");
+        // console.log("开始挂载")
         const undefinedElements = document.querySelectorAll(":not(:defined)");
         const promises = [...undefinedElements].map((button) => {
             return customElements.whenDefined(button.localName);

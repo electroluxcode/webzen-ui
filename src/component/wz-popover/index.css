@@ -4,6 +4,7 @@
   filter: drop-shadow(var(--shadow));
   opacity: 0;
   padding: 4px;
+  overflow: hidden;
 }
 :host([type=custom]) .pop {
   --pad: 10px;
@@ -15,7 +16,7 @@
 }
 :host(:not([type=custom])) .pop::before {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 16px;
   height: 16px;
   background-color: inherit;
@@ -27,7 +28,7 @@
   --pad: 12px;
 }
 .pop {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   overflow: visible;
@@ -51,7 +52,7 @@
 } */
 .pop::after {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: calc(var(--pad) * -1);
   z-index: -1;
 }
