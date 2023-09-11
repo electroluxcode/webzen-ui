@@ -1,0 +1,33 @@
+{
+  
+  "compilerOptions": {
+    "target": "esnext", // 使用最新的 ECMAScript 版本
+    "module": "esnext", // 生成 ECMAScript 模块
+    "lib": ["ES2019","dom", "es5"],
+    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
+    // "baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
+    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    
+    /* Interop Constraints */
+    // "isolatedModules": true,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
+    // "allowSyntheticDefaultImports": true,             /* Allow 'import x from y' when a module doesn't have a default export. */
+    // "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    // "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    // "moduleResolution": "node",
+    /* Type Checking */
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+    // "suppressImplicitAnyIndexErrors":true,
+    "noImplicitThis": false,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+
+    // // ""
+    // "included": ["*.ts"]
+    // "declaration":true,
+    // "declarationDir": "dist",
+    // "typeRoots": ["./types"]
+  },
+
+}

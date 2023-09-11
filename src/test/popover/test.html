@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* getComputedStyle(document.querySelector(":root")).getPropertyValue("--right") */
+    :root {
+        --left: 0;
+        --right: 0;
+        --top: 0
+    }
+    *{
+        transition: all .5s;
+    }
+    .cover {
+        background: red;
+        width: 100%;
+    }
+    .pop {
+        transform-origin: center top;
+        left: calc((var(--left) ) * 1px);
+        top: calc(var(--top) * 1px);
+        position: fixed;
+        transform: translate(var(--x) * 1px, var(--y) * 1px)  ;
+        z-index: 10;
+        overflow: visible;
+    
+    }
+    .pop[close] {
+        transform-origin: center top;
+        opacity: 0;
+    }
+
+ 
+    .pop[open] { 
+        opacity: 1;  
+    }
+
+    .pop_slot {
+        background: red;
+    }
+</style>
+
+<body>
+    <li>开始</li>
+    <li>开始</li>
+    <li>开始</li>
+    <li>开始</li>
+    <li class="test">开始</li>
+    <div class="popover" dir="bottom" target=".test" trigger="hover,focus">
+        <div close id="pop" class="pop" x="" part="pop">
+            <div class="pop_slot">sda</div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let testFn = () => {
+            console.log("ddd")
+        }
+        let target = document.querySelector(document.querySelector(".popover").getAttribute("target"))
+
+        var { left, right, bottom,height } = target.getBoundingClientRect()
+        document.documentElement.style.setProperty('--top', `${target.getBoundingClientRect().top}`);
+       
+        setTimeout(() => {
+
+            console.log( left, `${target.getBoundingClientRect().top}px`, right, bottom)
+            console.log(height,"heightheightheight")
+            document.querySelector(".pop").setAttribute("open", true)
+            document.documentElement.style.setProperty('--top', `${target.getBoundingClientRect().top+ 10}`);
+            document.documentElement.style.setProperty('--left',`${left}`);
+
+        }, 1000);
+        document.querySelector(".test").addEventListener("mouseenter", testFn)
+
+    </script>
+</body>
+
+</html>

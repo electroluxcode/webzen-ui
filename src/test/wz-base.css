@@ -1,0 +1,10 @@
+:host {
+  --webzen-theme-color: unset;
+}
+wz-popover:not(:defined) {
+  position: absolute;
+  visibility: hidden;
+}
+:not(:defined) {
+  opacity: 0;
+}
