@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* getComputedStyle(document.querySelector(":root")).getPropertyValue("--right") */
+body{
+    background: rgb(255, 254, 254);
+}
+.target {
+  border-radius: var(--border-radius-base, 4px);
+  background-color:  rgb(177, 39, 39);
+  opacity: 0;
+  padding: 2px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  /* visibility: hidden; */
+  inset: auto;
+  border: 0;
+  opacity: 0.5;
+  position: relative;
+  /* transform: scale(1); */
+  overflow: hidden;
+  z-index: 1;
+  
+  /* top: 10px; */
+  transform-origin: top;
+  /* left: calc((var(--left) + var(--right)) * 0.5px + var(--offset-x, 0) * 1px); */
+  left: 50%;
+  top: calc(var(--bottom) * 1px);
+  --x: -50%;
+  --y: 0%;
+}
+/* .angle:not([type="custom"])::before */
+ .angle:not([type="custom"])::before{
+  content: '';
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  background-color:  rgb(177, 39, 39);
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -40%);
+  z-index: 11;
+  clip-path: path('M 0 8 A 4 4 0 0 0 2.82842712474619 6.82842712474619 L 6.585786437626905 3.0710678118654755 A 2 2 0 0 1 9.414213562373096 3.0710678118654755 L 13.17157287525381 6.82842712474619 A 4 4 0 0 0 16 8 Z');
+  /* transform: scale(1); */
+  /* transform: scale(1); */
+  transform-origin: center center;
+}
+
+
+.target[open]{
+  /* transition: var(--transition, 0.2s);
+  --s: 1;
+  opacity: 1;
+  visibility: visible; */
+}
+
+
+
+
+
+.poper_container{
+    width: 100px;
+    overflow: hidden;
+}
+/* :host([dir=bottom]:is([show],[open])) .target {
+  --y: var(--pad);
+} */
+
+</style>
+
+<body>
+    <li class="origin">开始</li>
+    <li>开始</li>
+    <li>开始</li>
+    <li>开始</li>
+    <li class="test">开始</li>
+    <div class="target" dir="bottom" type="customhh" >
+        <div class="angle"></div>
+        <div class="poper_container">
+            3333sdaerwrewrewrddddddddddddddddd
+        </div>
+    </div>
+
+   
+    <script>
+
+    </script>
+    <script src="refactor.js" type="module"></script>
+    <script>
+        // let testFn = () => {
+        //     console.log("ddd")
+        // }
+        // let target = document.querySelector(document.querySelector(".popover").getAttribute("target"))
+
+        // var { left, right, bottom,height } = target.getBoundingClientRect()
+        // document.documentElement.style.setProperty('--top', `${target.getBoundingClientRect().top}`);
+       
+        // setTimeout(() => {
+
+        //     console.log( left, `${target.getBoundingClientRect().top}px`, right, bottom)
+        //     console.log(height,"heightheightheight")
+        //     document.querySelector(".target").setAttribute("open", true)
+        //     document.documentElement.style.setProperty('--top', `${target.getBoundingClientRect().top+ 10}`);
+        //     document.documentElement.style.setProperty('--left',`${left}`);
+
+        // }, 1000);
+        // document.querySelector(".test").addEventListener("mouseenter", testFn)
+
+    </script>
+</body>
+
+</html>

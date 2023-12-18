@@ -63,10 +63,9 @@ function ArrayToTree(arr: any, target: any) {
  * @feature1    动态async ✅
  * @feature2    单选 | 多选 逻辑 ✅
  * @feature3    搜索树 ✅
- * @feature4    拖拽树 ❌
- * @feature5    多选样式 disabled 自定义图标逻辑 ❌
+ * @feature4    拖拽树 | disabled 自定义图标逻辑 ❌
  */
-class tree {
+ class tree {
     /**
      * @des step1:初始化变量 和 配置文件
      * @param {*} options
@@ -91,6 +90,7 @@ class tree {
         this.initTree();
 
 
+        console.log("haihaihai:", this.TreePrefData)
         if (!this.options.multiple) {
             for (let i in this.TreePrefData) {
                 this.TreePrefData[this.TreePrefData[i].key].selected = false
@@ -234,7 +234,7 @@ class tree {
         $nodeContent.setAttribute("class", "node-content");
 
         // step4.2:处理展开符号点击事件
-        const $arrow = document.createElement("wz-icon");
+        const $arrow = document.createElement("i");
         if (node.children) {
             let ArrowExpandClass = node.expand ? "open" : "";
             let ArrowSearchedClass = node.searched ? "red" : "";
@@ -243,11 +243,7 @@ class tree {
             }
             $arrow.setAttribute(
                 "class",
-                `node-arrow   ${ArrowExpandClass} ${ArrowSearchedClass} `
-            );
-            $arrow.setAttribute(
-                "name",
-                `solid/angle-right`
+                `node-arrow  fa fa-angle-right ${ArrowExpandClass} ${ArrowSearchedClass} `
             );
         } else {
             let ArrowSearchedClass = node.searched ? "red" : "";
@@ -274,8 +270,6 @@ class tree {
         const TitleSelectedClass = node.selected ? "selected" : "";
         const TitleSearchedClass = node.searched ? "red" : "";
         $title.setAttribute("class", `node-title ${TitleSelectedClass} ${TitleSearchedClass}`);
-        // console.log("触发这个方法:",this.TreePrefData)
-
         $title.innerText = node.title;
 
         $title.addEventListener("click", () => {
@@ -284,9 +278,28 @@ class tree {
             if (this.options.multiple) {
                 dom?.querySelector(".node-title")!.classList.toggle("selected");
                 this.TreePrefData[node.key].selected = !node.selected;
+                dom.querySelector("input")!.checked = !dom.querySelector("input")!.checked
+                
+                let childArr = this.searchChildSwitch(node.key)
+                for (let i = childArr.length - 1; i >= 1; i--) {
+                    let dom = this.$container.querySelector(`[tree-id="${childArr[i].key}"]`)! as HTMLElement
+                    this.TreePrefData[childArr[i].key].selected = this.TreePrefData[node.key].selected
+                    this.mergeData()
+                    if(!dom){
+                        continue
+                    }
+                    if( this.TreePrefData[node.key].selected){
+                        dom.querySelector(".node-title")!.classList.add("selected");
+                    }else{
+                        dom.querySelector(".node-title")!.classList.remove("selected");
+                    }
+                    
+                    dom.querySelector("input")!.checked = this.TreePrefData[node.key].selected
+                    
+                }
+            
             } else {
                 // 单选
-
                 for (let i in this.TreePrefData) {
                     this.TreePrefData[this.TreePrefData[i].key].selected = false
                     let dom = this.$container.querySelector(`[tree-id="${this.TreePrefData[i].key}"]`)! as HTMLElement
@@ -301,7 +314,40 @@ class tree {
         })
 
         $nodeContent.appendChild($arrow);
+        // 添加checkbox
+        if (this.options.multiple) {
+            let $checkbox = document.createElement("input")
+            $checkbox.setAttribute("type", "checkbox")
+            if (node.selected) {
+                $checkbox.checked = true
+            }
+            $checkbox.addEventListener("click", () => {
+                let dom = this.$container.querySelector(`[tree-id="${node.key}"]`)! as HTMLElement
+                dom.querySelector(".node-title")!.classList.toggle("selected");
+                this.TreePrefData[node.key].selected = !node.selected;
+
+                let childArr = this.searchChildSwitch(node.key)
+                for (let i = childArr.length - 1; i >= 1; i--) {
+                    let dom = this.$container.querySelector(`[tree-id="${childArr[i].key}"]`)! as HTMLElement
+                    this.TreePrefData[childArr[i].key].selected = this.TreePrefData[node.key].selected
+                    this.mergeData()
+                    if(!dom){
+                        continue
+                    }
+                    if( this.TreePrefData[node.key].selected){
+                        dom.querySelector(".node-title")!.classList.add("selected");
+                    }else{
+                        dom.querySelector(".node-title")!.classList.remove("selected");
+                    }
+                   
+                    dom.querySelector("input")!.checked = this.TreePrefData[node.key].selected
+                    
+                }
+            })
+            $nodeContent.appendChild($checkbox);
+        }
         $nodeContent.appendChild($title);
+
         // 这个只是加动效
         $nodeContent.classList.add("open")
         $node.appendChild($nodeContent);
@@ -358,38 +404,35 @@ class tree {
         if (!this.TreePrefData[parent]) {
             return
         }
-      
-       
+
         for (let i = 0; i < data.length; i++) {
             this.TreePrefData[data[i].key] = data[i]
         }
         this.mergeData()
-        // 给父组件箭头 和 显示子组件添加动画 
+        // 给父组件箭头 和 显示子组件添加动画
         if (!this.TreePrefData[parent].children) {
             this.TreePrefData[parent].children = []
             let dom = this.$container.querySelector(`[tree-id="${parent}"]`)! as HTMLElement
-            let NodeArrow = dom?.querySelector(`.node-arrow`)!
-            NodeArrow?.classList.remove("hide")
-            NodeArrow?.setAttribute(
-                "name",
-                `solid/angle-right`
-            )
-            // 这里动画结束之后才 点击
-            setTimeout((NodeArrow) => {
-                (NodeArrow as HTMLElement).click()
-                setTimeout(() => {
-                    (NodeArrow as HTMLElement).click()
-                }, 100);
+            // dom?.querySelector(`.node-arrow`)?.classList.remove("hide")
+            dom?.querySelector(`.node-arrow`)?.setAttribute(
+                "class",
+                `node-arrow fa fa-angle-right open`
+            );
+            setTimeout(() => {
+                (dom.querySelector(`.node-arrow`) as HTMLElement)?.click()
+
                 if (!this.options.multiple) {
                     for (let i in this.TreePrefData) {
                         this.TreePrefData[this.TreePrefData[i].key].selected = false
                         let dom = this.$container.querySelector(`[tree-id="${this.TreePrefData[i].key}"]`)! as HTMLElement
-                        console.log("dom:", dom)
                         dom?.querySelector(".node-title")?.classList?.remove("selected")
                     }
                     this.mergeData()
                 }
-            }, 0,NodeArrow);
+                setTimeout(() => {
+                    (dom.querySelector(`.node-arrow`) as HTMLElement)?.click()
+                }, 100);
+            }, 0);
         }
 
 
@@ -416,17 +459,34 @@ class tree {
      * @feature3 搜索树功能
      * @des 获取所有父节点
      */
-    searchDataSwitch(ParentId: string, StopFlag: string) {
+    searchParentSwitch(ParentId: string, StopFlag: string) {
         let parent: any = []
         if (this.TreePrefData[ParentId].parent != StopFlag) {
             parent.push(this.TreePrefData[ParentId])
-            parent = parent.concat(this.searchDataSwitch(this.TreePrefData[ParentId].parent, "0"))
+            parent = parent.concat(this.searchParentSwitch(this.TreePrefData[ParentId].parent, "0"))
         } else {
             parent.push(this.TreePrefData[ParentId])
         }
         return parent
     }
-
+    /**
+     * @feature3 搜索树功能
+     * @des 获取所有子节点
+     */
+    searchChildSwitch(childId: string) {
+        let child: any = []
+        console.log(childId,this.TreePrefData[childId])
+        if (this.TreePrefData[childId].children) {
+            child.push(this.TreePrefData[childId])
+            for(let i in this.TreePrefData[childId].children){
+                // @ts-ignore
+                child = child.concat(this.searchChildSwitch(this.TreePrefData[childId]["children"]![i].key))
+            }
+        } else {
+            child.push(this.TreePrefData[childId])
+        }
+        return child
+    }
     /**
      * @feature3 搜索树功能
      * @des 搜索树主要逻辑
@@ -443,30 +503,24 @@ class tree {
         }
         console.log(res)
         res.forEach((v: any) => {
-            let parentArr = this.searchDataSwitch(v!.key, "0")
+            let parentArr = this.searchParentSwitch(v!.key, "0")
             for (let i = parentArr.length - 1; i >= 1; i--) {
                 // 处理展开事件
                 setTimeout((param) => {
                     if (this.TreePrefData[param.key].expand || !this.TreePrefData[param.key].children) {
                         return
                     }
-
                     let dom = this.$container.querySelector(`[tree-id="${param.key}"]`)! as HTMLElement
                     (dom.querySelector(`.node-arrow`) as HTMLElement)?.click()
-
-
                 }, 0, parentArr[i]);
             }
-        })
-        setTimeout(() => {
-            res.forEach((e: any) => {
-                let dom = this.$container.querySelector(`[tree-id="${e.key}"]`)! as HTMLElement
-                this.TreePrefData[e.key].searched = true
-                dom.querySelector(".node-arrow")?.classList.add("red")
-                dom.querySelector(".node-title")?.classList.add("red")
-            })
+            let dom = this.$container.querySelector(`[tree-id="${v.key}"]`)! as HTMLElement
+            this.TreePrefData[v.key].searched = true
+            dom.querySelector(".node-arrow")?.classList.add("red")
+            dom.querySelector(".node-title")?.classList.add("red")
             this.mergeData()
-        }, 0);
+        })
+
 
 
     }
@@ -480,7 +534,7 @@ class tree {
 import Base from "../wz-base.js";
 // @ts-ignore
 import styleslight from "./index.css?inline" assert { type: "css" };
-
+import stylesfont from "https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css?inline" assert { type: "css" };
 function switchJson(input: string): any {
     let init = input
     init = (Function("return " + init))()
@@ -524,6 +578,7 @@ class myDiv extends Base {
         // 重要4:能力增强
 
         this.adoptedStyle(styleslight)
+        this.adoptedStyle(stylesfont)
     }
     // 重要4:能力增强
 
@@ -593,4 +648,4 @@ customElements.define("wz-tree", myDiv);
 customElements.whenDefined('wz-tree').then(function() {
     console.log("开始define",this)
 });
-// export { tree }
+export { tree }

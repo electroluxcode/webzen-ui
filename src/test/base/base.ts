@@ -4,19 +4,17 @@ interface OptionType{
     position:"tl" | "tc" | "tr"  | "bl" | "bc" | "br",
     // 是否显示箭头
     arrow:boolean,
-    options: OptionType
-    $container: HTMLElement;
 }
-class popo{
+class popovewr{
     options: OptionType
     $container: HTMLElement;
     constructor(options: OptionType) {
         const defaultOptions = {
             element: null,
-            data: [],
-            multiple: false,
-            toggle: () => { },
-            select: () => { },
+            trigger:"hover",
+            position:"bc" ,
+            // 是否显示箭头
+            arrow:true,
         };
         this.options = Object.assign({}, defaultOptions, options);
         this.$container = this.options.element;

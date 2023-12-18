@@ -60,6 +60,7 @@ class tree {
         console.log(this.options);
         this.TreePrefData = {};
         this.initTree();
+        console.log("haihaihai:", this.TreePrefData);
         if (!this.options.multiple) {
             for (let i in this.TreePrefData) {
                 this.TreePrefData[this.TreePrefData[i].key].selected = false;
@@ -187,15 +188,14 @@ class tree {
         const $nodeContent = document.createElement("div");
         $nodeContent.setAttribute("class", "node-content");
         // step4.2:处理展开符号点击事件
-        const $arrow = document.createElement("wz-icon");
+        const $arrow = document.createElement("i");
         if (node.children) {
             let ArrowExpandClass = node.expand ? "open" : "";
             let ArrowSearchedClass = node.searched ? "red" : "";
             if (UpdateTitle) {
                 ArrowExpandClass = `${ArrowSearchedClass}`;
             }
-            $arrow.setAttribute("class", `node-arrow   ${ArrowExpandClass} ${ArrowSearchedClass} `);
-            $arrow.setAttribute("name", `solid/angle-right`);
+            $arrow.setAttribute("class", `node-arrow  fa fa-angle-right ${ArrowExpandClass} ${ArrowSearchedClass} `);
         }
         else {
             let ArrowSearchedClass = node.searched ? "red" : "";
@@ -220,7 +220,6 @@ class tree {
         const TitleSelectedClass = node.selected ? "selected" : "";
         const TitleSearchedClass = node.searched ? "red" : "";
         $title.setAttribute("class", `node-title ${TitleSelectedClass} ${TitleSearchedClass}`);
-        // console.log("触发这个方法:",this.TreePrefData)
         $title.innerText = node.title;
         $title.addEventListener("click", () => {
             // 多选
@@ -228,6 +227,23 @@ class tree {
             if (this.options.multiple) {
                 dom?.querySelector(".node-title").classList.toggle("selected");
                 this.TreePrefData[node.key].selected = !node.selected;
+                dom.querySelector("input").checked = !dom.querySelector("input").checked;
+                let childArr = this.searchChildSwitch(node.key);
+                for (let i = childArr.length - 1; i >= 1; i--) {
+                    let dom = this.$container.querySelector(`[tree-id="${childArr[i].key}"]`);
+                    this.TreePrefData[childArr[i].key].selected = this.TreePrefData[node.key].selected;
+                    this.mergeData();
+                    if (!dom) {
+                        continue;
+                    }
+                    if (this.TreePrefData[node.key].selected) {
+                        dom.querySelector(".node-title").classList.add("selected");
+                    }
+                    else {
+                        dom.querySelector(".node-title").classList.remove("selected");
+                    }
+                    dom.querySelector("input").checked = this.TreePrefData[node.key].selected;
+                }
             }
             else {
                 // 单选
@@ -243,6 +259,36 @@ class tree {
             this.mergeData();
         });
         $nodeContent.appendChild($arrow);
+        // 添加checkbox
+        if (this.options.multiple) {
+            let $checkbox = document.createElement("input");
+            $checkbox.setAttribute("type", "checkbox");
+            if (node.selected) {
+                $checkbox.checked = true;
+            }
+            $checkbox.addEventListener("click", () => {
+                let dom = this.$container.querySelector(`[tree-id="${node.key}"]`);
+                dom.querySelector(".node-title").classList.toggle("selected");
+                this.TreePrefData[node.key].selected = !node.selected;
+                let childArr = this.searchChildSwitch(node.key);
+                for (let i = childArr.length - 1; i >= 1; i--) {
+                    let dom = this.$container.querySelector(`[tree-id="${childArr[i].key}"]`);
+                    this.TreePrefData[childArr[i].key].selected = this.TreePrefData[node.key].selected;
+                    this.mergeData();
+                    if (!dom) {
+                        continue;
+                    }
+                    if (this.TreePrefData[node.key].selected) {
+                        dom.querySelector(".node-title").classList.add("selected");
+                    }
+                    else {
+                        dom.querySelector(".node-title").classList.remove("selected");
+                    }
+                    dom.querySelector("input").checked = this.TreePrefData[node.key].selected;
+                }
+            });
+            $nodeContent.appendChild($checkbox);
+        }
         $nodeContent.appendChild($title);
         // 这个只是加动效
         $nodeContent.classList.add("open");
@@ -293,29 +339,26 @@ class tree {
             this.TreePrefData[data[i].key] = data[i];
         }
         this.mergeData();
-        // 给父组件箭头 和 显示子组件添加动画 
+        // 给父组件箭头 和 显示子组件添加动画
         if (!this.TreePrefData[parent].children) {
             this.TreePrefData[parent].children = [];
             let dom = this.$container.querySelector(`[tree-id="${parent}"]`);
-            let NodeArrow = dom?.querySelector(`.node-arrow`);
-            NodeArrow?.classList.remove("hide");
-            NodeArrow?.setAttribute("name", `solid/angle-right`);
-            // 这里动画结束之后才 点击
-            setTimeout((NodeArrow) => {
-                NodeArrow.click();
-                setTimeout(() => {
-                    NodeArrow.click();
-                }, 100);
+            // dom?.querySelector(`.node-arrow`)?.classList.remove("hide")
+            dom?.querySelector(`.node-arrow`)?.setAttribute("class", `node-arrow fa fa-angle-right open`);
+            setTimeout(() => {
+                dom.querySelector(`.node-arrow`)?.click();
                 if (!this.options.multiple) {
                     for (let i in this.TreePrefData) {
                         this.TreePrefData[this.TreePrefData[i].key].selected = false;
                         let dom = this.$container.querySelector(`[tree-id="${this.TreePrefData[i].key}"]`);
-                        console.log("dom:", dom);
                         dom?.querySelector(".node-title")?.classList?.remove("selected");
                     }
                     this.mergeData();
                 }
-            }, 0, NodeArrow);
+                setTimeout(() => {
+                    dom.querySelector(`.node-arrow`)?.click();
+                }, 100);
+            }, 0);
         }
         this.flatData(data, parent);
         this.TreePrefData[parent].children.push(...data);
@@ -338,16 +381,35 @@ class tree {
      * @feature3 搜索树功能
      * @des 获取所有父节点
      */
-    searchDataSwitch(ParentId, StopFlag) {
+    searchParentSwitch(ParentId, StopFlag) {
         let parent = [];
         if (this.TreePrefData[ParentId].parent != StopFlag) {
             parent.push(this.TreePrefData[ParentId]);
-            parent = parent.concat(this.searchDataSwitch(this.TreePrefData[ParentId].parent, "0"));
+            parent = parent.concat(this.searchParentSwitch(this.TreePrefData[ParentId].parent, "0"));
         }
         else {
             parent.push(this.TreePrefData[ParentId]);
         }
         return parent;
+    }
+    /**
+     * @feature3 搜索树功能
+     * @des 获取所有子节点
+     */
+    searchChildSwitch(childId) {
+        let child = [];
+        console.log(childId, this.TreePrefData[childId]);
+        if (this.TreePrefData[childId].children) {
+            child.push(this.TreePrefData[childId]);
+            for (let i in this.TreePrefData[childId].children) {
+                // @ts-ignore
+                child = child.concat(this.searchChildSwitch(this.TreePrefData[childId]["children"][i].key));
+            }
+        }
+        else {
+            child.push(this.TreePrefData[childId]);
+        }
+        return child;
     }
     /**
      * @feature3 搜索树功能
@@ -364,7 +426,7 @@ class tree {
         }
         console.log(res);
         res.forEach((v) => {
-            let parentArr = this.searchDataSwitch(v.key, "0");
+            let parentArr = this.searchParentSwitch(v.key, "0");
             for (let i = parentArr.length - 1; i >= 1; i--) {
                 // 处理展开事件
                 setTimeout((param) => {
@@ -375,21 +437,18 @@ class tree {
                     dom.querySelector(`.node-arrow`)?.click();
                 }, 0, parentArr[i]);
             }
-        });
-        setTimeout(() => {
-            res.forEach((e) => {
-                let dom = this.$container.querySelector(`[tree-id="${e.key}"]`);
-                this.TreePrefData[e.key].searched = true;
-                dom.querySelector(".node-arrow")?.classList.add("red");
-                dom.querySelector(".node-title")?.classList.add("red");
-            });
+            let dom = this.$container.querySelector(`[tree-id="${v.key}"]`);
+            this.TreePrefData[v.key].searched = true;
+            dom.querySelector(".node-arrow")?.classList.add("red");
+            dom.querySelector(".node-title")?.classList.add("red");
             this.mergeData();
-        }, 0);
+        });
     }
 }
 import Base from "../wz-base.js";
 // @ts-ignore
 import styleslight from "./index.css?inline" assert { type: "css" };
+import stylesfont from "https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css?inline" assert { type: "css" };
 function switchJson(input) {
     let init = input;
     init = (Function("return " + init))();
@@ -422,6 +481,7 @@ class myDiv extends Base {
         // this.config = switchJson(this.getAttribute("config")!)
         // 重要4:能力增强
         this.adoptedStyle(styleslight);
+        this.adoptedStyle(stylesfont);
     }
     // 重要4:能力增强
     /**
@@ -481,4 +541,4 @@ customElements.define("wz-tree", myDiv);
 customElements.whenDefined('wz-tree').then(function () {
     console.log("开始define", this);
 });
-// export { tree }
+export { tree };
